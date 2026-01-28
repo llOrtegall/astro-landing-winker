@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+/* Es necesario cargar todos los pesos y se podrían establecer en  @theme las variables de cada una*/
+@font-face {
+  font-family: 'Geist';
+  src: url('../assets/Geist-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+
+@theme {
+  --color-primary: #18181B;
+  --color-secondary: #5951A3;
+  --color-tertiary: #212124;
+  --color-quaternary: #5F3CF7;
+  --color-fifth: #D9D9D9;
+  --color-pri: #FFFFFF;
+  --color-sec: #98989A;
+  --color-border-pri: #353537;
+}
+
+:root {
+  color: white;
+  background: var(--color-primary);
+  font-family: 'Geist', sans-serif;
+}
