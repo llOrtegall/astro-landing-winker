@@ -1,12 +1,35 @@
 ---
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
-import Apps from "../components/Apps.astro";
-import AppsIA from "../components/AppsIA.astro";
+import Proyectos from "../components/Proyectos.astro";
+import Servicios from "../components/Servicios.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Precios from "../components/Precios.astro";
+import Blog from "../components/Blog.astro";
+import Contacto from "../components/Contacto.astro";
 ---
 
-<Layout>
-	<Hero />
-	<Apps />
-	<AppsIA />
+<Layout title="Landing Page Winkermind">
+	<SectionContainer id="hero">
+		<Hero />
+	</SectionContainer>
+	<SectionContainer id="proyectos">
+		<Proyectos />
+	</SectionContainer>
+
+	<SectionContainer id="servicios">
+		<Servicios />
+	</SectionContainer>
+
+	<SectionContainer id="precios">
+		<Precios />
+	</SectionContainer>
+
+	<SectionContainer id="blog">
+		<Blog />
+	</SectionContainer>
+
+	<SectionContainer id="contacto">
+		<Contacto />
+	</SectionContainer>
 </Layout>
