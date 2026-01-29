@@ -1,13 +1,11 @@
 @import "tailwindcss";
 
-/* Es necesario cargar todos los pesos y se podrían establecer en  @theme las variables de cada una*/
 @font-face {
   font-family: 'Geist';
   src: url('../assets/Geist-Variable.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
 }
-
 
 @theme {
   --color-primary: #18181B;
@@ -23,5 +21,10 @@
 :root {
   color: white;
   background: var(--color-primary);
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
+}
+
+html {
+  /* Offset para compensar el header sticky */
+  scroll-padding-top: 5rem;
 }
