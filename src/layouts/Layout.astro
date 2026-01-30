@@ -1,10 +1,11 @@
 ---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -14,9 +15,8 @@ import Header from "../components/Header.astro";
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<section class="w-350 mx-auto my-8">
-			<Header />
-			<slot />
-		</section>
+		<Header />
+		<slot />
+		<Footer />
 	</body>
 </html>
