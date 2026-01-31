@@ -26,10 +26,10 @@ export function useScrollDetection(threshold: number = SCROLL_THRESHOLD) {
 }
 
 export function useSectionObserver() {
-  const [activeSection, setActiveSection] = useState('proyectos');
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('main[id]');
     if (sections.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {

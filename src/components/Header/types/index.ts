@@ -26,7 +26,7 @@ export const OBSERVER_OPTIONS = {
 
 // CSS Classes
 export const HEADER_BASE_CLASSES = 'mx-auto px-12 sticky rounded-md z-50 transition-all duration-700 ease-in-out';
-export const HEADER_SCROLLED_CLASSES = 'w-250 top-6 border border-pri/10 bg-background/50 backdrop-blur';
-export const HEADER_INITIAL_CLASSES = 'w-350 top-10 border-transparent bg-transparent';
+export const HEADER_SCROLLED_CLASSES = 'w-4xl top-6 border border-pri/10 bg-background/50 backdrop-blur';
+export const HEADER_INITIAL_CLASSES = 'w-7xl top-2 border-transparent bg-transparent';
 export const SECTION_BASE_CLASSES = 'flex items-center justify-between transition-all duration-700 ease-in-out';
 export const NAV_ACTIVE_CLASSES = 'border-[0.5px] px-2 py-1 border-border-pri bg-tertiary rounded-full';

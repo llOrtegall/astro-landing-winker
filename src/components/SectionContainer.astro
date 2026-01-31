@@ -1,7 +1,7 @@
 ---
-const { class : className, id } = Astro.props;
+const { id } = Astro.props;
 ---
 
-<section id={id} class={`relative w-7xl min-h-screen mx-auto ${className}`}>
+<main id={id} class="max-w-7xl mx-auto min-h-screen">
     <slot />
-</section>
+</main>

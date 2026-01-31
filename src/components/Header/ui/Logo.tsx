@@ -5,7 +5,7 @@ export function Logo() {
         <img
           src="/logo.png"
           alt="Logo Winker"
-          className="w-10 h-10 object-contain"
+          className="size-8 object-contain"
         />
         <p className="font-semibold text-xl">Winkermind</p>
       </figure>
