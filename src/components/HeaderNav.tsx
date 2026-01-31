@@ -15,7 +15,26 @@ const navItems: NavItem[] = [
 
 export default function HeaderNav() {
   const [activeSection, setActiveSection] = useState<string>('proyectos');
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
+  // Detectar scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Verificar posición inicial
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Detectar sección visible
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
 
@@ -53,8 +72,14 @@ export default function HeaderNav() {
   };
 
   return (
-    <header className="w-250 mx-auto px-12 mt-6 sticky top-0 border border-pri/10 rounded-md bg-background/50 backdrop-blur z-50">
-      <section className="flex h-16 items-center justify-between">
+    <header
+      className={`mx-auto px-12 sticky  rounded-md z-50 transition-all duration-700 ease-in-out ${isScrolled
+          ? 'w-250 top-6 border border-pri/10 bg-background/50 backdrop-blur'
+          : 'w-350 top-10 border-transparent bg-transparent'
+        }`}
+    >
+      <section className={`flex items-center justify-between transition-all duration-700 ease-in-out ${isScrolled ? 'h-16' : 'h-20'
+        }`}>
         <a href="#hero">
           <figure className="flex items-center gap-4">
             <img
@@ -74,8 +99,8 @@ export default function HeaderNav() {
                 <li
                   key={item.href}
                   className={`transition-all ${isActive
-                      ? 'border-[0.5px] px-2 py-1 border-border-pri bg-tertiary rounded-full'
-                      : ''
+                    ? 'border-[0.5px] px-2 py-1 border-border-pri bg-tertiary rounded-full'
+                    : ''
                     }`}
                 >
                   <a
