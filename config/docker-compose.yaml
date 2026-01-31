@@ -1,7 +1,7 @@
 services:
   nginx:
     image: nginx:stable-alpine3.21
-    container_name: demo-landing
+    container_name: astro-nginx
     restart: unless-stopped
     volumes:
       - ../dist:/usr/share/nginx/html:ro

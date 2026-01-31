@@ -67,7 +67,7 @@ pipeline {
                    sleep 10
                    
                    echo "📊 Docker services status:"
-                   docker ps --filter "name=.*demo.*" --format "table {{.Names}}\t{{.Status}}"
+                   docker ps --filter "name=.*astro-nginx.*" --format "table {{.Names}}\t{{.Status}}"
                    
                    echo "🌐 Validating API response..."
                    curl -I https://demo.lortegal.com
