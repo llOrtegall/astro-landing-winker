@@ -2,14 +2,40 @@
 interface Props {
   title: string;
   description: string;
-  color: string;
+  color: "yellow" | "slate" | "red" | "blue" | "green";
 }
 
 const { title, description, color } = Astro.props;
+
+// Mapping de colores a clases completas de Tailwind
+const colorClasses = {
+  yellow: {
+    gradient: "to-yellow-400/60",
+    button: "bg-yellow-500 hover:bg-yellow-400",
+  },
+  slate: {
+    gradient: "to-slate-400/60",
+    button: "bg-slate-500 hover:bg-slate-400",
+  },
+  red: {
+    gradient: "to-red-400/60",
+    button: "bg-red-500 hover:bg-red-400",
+  },
+  blue: {
+    gradient: "to-blue-400/60",
+    button: "bg-blue-500 hover:bg-blue-400",
+  },
+  green: {
+    gradient: "to-green-400/60",
+    button: "bg-green-500 hover:bg-green-400",
+  },
+};
+
+const classes = colorClasses[color];
 ---
 
 <div
-  class={`rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% to-${color}-400/60 to-120%`}
+  class={`rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% ${classes.gradient} to-120%`}
 >
   <div class="flex items-center justify-between mb-4">
     <div class="flex items-center gap-4">
@@ -17,7 +43,7 @@ const { title, description, color } = Astro.props;
       <h3 class="text-3xl font-normal text-white">{title}</h3>
     </div>
     <button
-      class={`w-10 h-10 bg-${color}-500 hover:bg-${color}-400 rounded-full flex items-center justify-center transition shrink-0`}
+      class={`w-10 h-10 ${classes.button} rounded-full flex items-center justify-center transition shrink-0`}
     >
       <svg
         class="w-5 h-5 text-slate-900"
