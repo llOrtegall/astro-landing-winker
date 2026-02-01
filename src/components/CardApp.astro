@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  color: string;
+}
+
+const { title, description, color } = Astro.props;
+---
+
+<div
+  class={`rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% to-${color}-400/60 to-120%`}
+>
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center gap-4">
+      <div class="size-10 bg-white rounded-md"></div>
+      <h3 class="text-3xl font-normal text-white">{title}</h3>
+    </div>
+    <button
+      class={`w-10 h-10 bg-${color}-500 hover:bg-${color}-400 rounded-full flex items-center justify-center transition shrink-0`}
+    >
+      <svg
+        class="w-5 h-5 text-slate-900"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="text-gray-400 text-sm leading-relaxed">
+    {description}
+  </p>
+</div>
