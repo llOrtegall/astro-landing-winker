@@ -1,101 +1,31 @@
+---
+import CardApp from "./CardApp.astro";
+---
+
 <section>
   <h2 class="text-3xl font-normal text-white mb-12">Apps de Música</h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- Vip Remixer -->
-    <div
-      class="rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% to-yellow-400/60 to-120%"
-    >
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-4">
-          <div class="size-10 bg-white rounded-md"></div>
-          <h3 class="text-3xl font-normal text-white">Vip Remixer</h3>
-        </div>
-        <button
-          class="w-10 h-10 bg-yellow-500 hover:bg-yellow-400 rounded-full flex items-center justify-center transition shrink-0"
-        >
-          <svg
-            class="w-5 h-5 text-slate-900"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2.5"
-              d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
-      <p class="text-gray-400 text-sm leading-relaxed">
-        Plataforma exclusiva para DJs, encuentra remixes, transiciones, open
-        show, mashups, etc
-      </p>
-    </div>
+    <CardApp
+      title="Vip Remixer"
+      description="Plataforma exclusiva para DJs, encuentra remixes, transiciones, open show, mashups, etc"
+      color="yellow"
+    />
 
     <!-- Flac Downloader -->
-    <div
-      class="rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% to-white/60 to-120%"
-    >
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-4">
-          <div class="size-10 bg-white rounded-md"></div>
-          <h3 class="text-3xl font-normal text-white">Flac Downloader</h3>
-        </div>
-        <button
-          class="w-10 h-10 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition shrink-0"
-        >
-          <svg
-            class="w-5 h-5 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2.5"
-              d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
-      <p class="text-gray-400 text-sm leading-relaxed">
-        Página web para descargar cualquier canción en calidad flac y sin
-        pérdida
-      </p>
-    </div>
+    <CardApp
+      title="Flac Downloader"
+      description="Página web para descargar cualquier canción en calidad flac y sin pérdida"
+      color="slate"
+    />
 
     <!-- Mp3 Downloader -->
-    <div
-      class="rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% to-[#E5502C]/60 to-120%"
-    >
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-4">
-          <div class="size-10 bg-white rounded-md"></div>
-          <h3 class="text-3xl font-normal text-white">Mp3 Downloader</h3>
-        </div>
-        <button
-          class="w-10 h-10 bg-[#E5502C] rounded-full flex items-center justify-center transition shrink-0"
-        >
-          <svg
-            class="w-5 h-5 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2.5"
-              d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
-      <p class="text-white/90 text-sm leading-relaxed">
-        Página web para descargar cualquier canción en calidad mp3 320 kbps
-      </p>
-    </div>
+    <CardApp
+      title="Mp3 Downloader"
+      description="Página web para descargar cualquier canción en calidad mp3 320 kbps"
+      color="red"
+    />
   </div>
 
   <h2 class="text-3xl font-normal text-white my-14">
@@ -104,66 +34,17 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <!-- Resourzly -->
-    <div
-      class="rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% to-blue-700/60 to-120%"
-    >
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-4">
-          <div class="size-10 bg-white rounded-md"></div>
-          <h3 class="text-3xl font-normal text-white">Resourzly</h3>
-        </div>
-        <button
-          class="w-10 h-10 bg-blue-500 hover:bg-blue-400 rounded-full flex items-center justify-center transition shrink-0"
-        >
-          <svg
-            class="w-5 h-5 text-slate-900"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2.5"
-              d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
-      <p class="text-gray-400 text-sm leading-relaxed">
-        Descarga gratis templates para Photoshop, Illustrator, After
-        Effects y más.
-      </p>
-    </div>
+    <CardApp
+      title="Resourzly"
+      description="Descarga gratis templates para Photoshop, Illustrator, After Effects y más."
+      color="blue"
+    />
 
     <!-- wShare -->
-    <div
-      class="rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% to-green-600/60 to-120%"
-    >
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-4">
-          <div class="size-10 bg-white rounded-md"></div>
-          <h3 class="text-3xl font-normal text-white">wShare</h3>
-        </div>
-        <button
-          class="w-10 h-10 bg-green-700 hover:bg-green-600 rounded-full flex items-center justify-center transition shrink-0"
-        >
-          <svg
-            class="w-5 h-5 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2.5"
-              d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
-      <p class="text-gray-400 text-sm leading-relaxed">
-        Sube y comparte archivos gratis con tus amigos.
-      </p>
-    </div>
+    <CardApp
+      title="wShare"
+      description="Sube y comparte archivos gratis con tus amigos."
+      color="green"
+    />
   </div>
 </section>
