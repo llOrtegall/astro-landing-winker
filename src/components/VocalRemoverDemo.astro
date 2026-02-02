@@ -1,0 +1,287 @@
+---
+interface Stem {
+  id: string;
+  name: string;
+  file: string;
+}
+
+const stems: Stem[] = [
+  { id: "vocals", name: "Vocals", file: "/demo/Billie_Eilish_-_bad_guy_Vocals_by_vipremixer_q5xbFCP.wav" },
+  { id: "drums", name: "Drums", file: "/demo/Billie_Eilish_-_bad_guy_Drums_by_vipremixer.wav" },
+  { id: "bass", name: "Bass", file: "/demo/Billie_Eilish_-_bad_guy_Bass_by_vipremixer.wav" },
+  { id: "piano", name: "Piano", file: "/demo/Billie_Eilish_-_bad_guy_Piano_by_vipremixer.wav" },
+  { id: "guitar", name: "Guitar", file: "/demo/Billie_Eilish_-_bad_guy_Guitar_by_vipremixer.wav" },
+  { id: "other", name: "Other", file: "/demo/Billie_Eilish_-_bad_guy_Other_by_vipremixer.wav" },
+];
+---
+
+<section class="">
+  <h2 class="text-3xl font-normal text-white pb-8">
+    Apps de Inteligencia Artificial
+  </h2>
+
+  <div class="max-w-4xl mx-auto">
+    <!-- Vocal Remover Card -->
+    <div
+      class="bg-black/40 backdrop-blur rounded-3xl p-8 border border-slate-800/50"
+    >
+      <!-- Header -->
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <div class="w-16 h-16 bg-white rounded-2xl shrink-0"></div>
+        <div>
+          <h3 class="text-3xl font-bold text-white">Vocal Remover</h3>
+        </div>
+      </div>
+
+      <!-- Descripción -->
+      <p class="text-gray-400 text-center mb-8">
+        Extrae vocales, instrumentales y stems de cualquier canción
+      </p>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-4">
+          <button
+            id="playPauseBtn"
+            class="w-12 h-12 bg-emerald-600 hover:bg-emerald-500 rounded-full flex items-center justify-center transition"
+          >
+            <!-- Play Icon -->
+            <svg
+              id="playIcon"
+              class="w-6 h-6 text-white"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+            <!-- Pause Icon (hidden by default) -->
+            <svg
+              id="pauseIcon"
+              class="w-6 h-6 text-white hidden"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <rect x="6" y="5" width="4" height="14" rx="1"></rect>
+              <rect x="14" y="5" width="4" height="14" rx="1"></rect>
+            </svg>
+          </button>
+          <div>
+            <p class="text-white font-medium">Billie Eilish - Bad Guy</p>
+            <p class="text-gray-400 text-sm">
+              Vocal, drums, bass, piano, guitar (Stems)
+            </p>
+          </div>
+        </div>
+
+        <button
+          class="flex items-center gap-3 text-emerald-500 hover:text-emerald-400 transition group"
+        >
+          <span class="font-medium">Ir a Vocal Remover</span>
+          <div
+            class="w-10 h-10 bg-emerald-600 hover:bg-emerald-500 rounded-full flex items-center justify-center transition"
+          >
+            <svg
+              class="w-5 h-5 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <!-- Audio Elements (hidden) -->
+      {stems.map((stem) => (
+        <audio id={`audio-${stem.id}`} preload="auto">
+          <source src={stem.file} type="audio/wav" />
+        </audio>
+      ))}
+
+      <!-- Stems List -->
+      <div class="bg-black/30 rounded-2xl p-6 border border-slate-800/30">
+        <div class="space-y-4">
+          {stems.map((stem) => (
+            <div class="flex items-center gap-4" data-stem={stem.id}>
+              <!-- Icon -->
+              <div
+                class="w-10 h-10 bg-linear-to-br from-gray-500 to-gray-600 rounded-full shrink-0 flex items-center justify-center"
+              >
+                <span class="text-white text-xs font-bold">{stem.name.charAt(0)}</span>
+              </div>
+              
+              <!-- Waveform visualization -->
+              <div
+                class="flex-1 h-10 bg-linear-to-r from-gray-600 via-gray-500 to-gray-600 rounded-xl relative overflow-hidden"
+              >
+                <div
+                  class="h-full bg-emerald-500/30 transition-all duration-300"
+                  data-progress={stem.id}
+                  style="width: 0%"
+                ></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span class="text-white text-xs font-medium">{stem.name}</span>
+                </div>
+              </div>
+              
+              <!-- Mute/Unmute Button -->
+              <button
+                class="stem-mute-btn w-10 h-10 rounded-lg flex items-center justify-center transition shrink-0"
+                class:list={["bg-emerald-600 hover:bg-emerald-500"]}
+                data-stem-mute={stem.id}
+              >
+                <!-- Volume On Icon -->
+                <svg
+                  class="volume-on w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                  ></path>
+                </svg>
+                <!-- Volume Off Icon (hidden by default) -->
+                <svg
+                  class="volume-off w-5 h-5 text-white hidden"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Audio player state
+  let isPlaying = false;
+  let audioElements: HTMLAudioElement[] = [];
+  let muteStates = new Map<string, boolean>();
+
+  const stemIds = ["vocals", "drums", "bass", "piano", "guitar", "other"];
+
+  // Initialize audio elements
+  function initAudio() {
+    stemIds.forEach((id) => {
+      const audio = document.getElementById(`audio-${id}`) as HTMLAudioElement;
+      if (audio) {
+        audioElements.push(audio);
+        muteStates.set(id, false);
+        
+        // Update progress bar
+        audio.addEventListener('timeupdate', () => {
+          const progressBar = document.querySelector(`[data-progress="${id}"]`) as HTMLElement;
+          if (progressBar && audio.duration) {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${progress}%`;
+          }
+        });
+      }
+    });
+  }
+
+  // Play/Pause functionality
+  function togglePlayPause() {
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+
+    if (isPlaying) {
+      // Pause all
+      audioElements.forEach(audio => audio.pause());
+      playIcon?.classList.remove('hidden');
+      pauseIcon?.classList.add('hidden');
+    } else {
+      // Play all in sync
+      const startTime = Date.now();
+      audioElements.forEach((audio, index) => {
+        // Sync all audios to start at the same time
+        if (audio.readyState >= 2) { // HAVE_CURRENT_DATA
+          audio.play().catch(err => console.error(`Error playing audio ${index}:`, err));
+        } else {
+          audio.addEventListener('canplay', () => {
+            audio.play().catch(err => console.error(`Error playing audio ${index}:`, err));
+          }, { once: true });
+        }
+      });
+      playIcon?.classList.add('hidden');
+      pauseIcon?.classList.remove('hidden');
+    }
+
+    isPlaying = !isPlaying;
+  }
+
+  // Mute/Unmute individual stem
+  function toggleMute(stemId: string) {
+    const audio = document.getElementById(`audio-${stemId}`) as HTMLAudioElement;
+    const button = document.querySelector(`[data-stem-mute="${stemId}"]`);
+    const volumeOn = button?.querySelector('.volume-on');
+    const volumeOff = button?.querySelector('.volume-off');
+
+    if (audio && button) {
+      const isMuted = muteStates.get(stemId) || false;
+      audio.muted = !isMuted;
+      muteStates.set(stemId, !isMuted);
+
+      // Update button styles
+      if (!isMuted) {
+        button.classList.remove('bg-emerald-600', 'hover:bg-emerald-500');
+        button.classList.add('bg-gray-600', 'hover:bg-gray-500');
+        volumeOn?.classList.add('hidden');
+        volumeOff?.classList.remove('hidden');
+      } else {
+        button.classList.remove('bg-gray-600', 'hover:bg-gray-500');
+        button.classList.add('bg-emerald-600', 'hover:bg-emerald-500');
+        volumeOn?.classList.remove('hidden');
+        volumeOff?.classList.add('hidden');
+      }
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    initAudio();
+
+    // Play/Pause button
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    playPauseBtn?.addEventListener('click', togglePlayPause);
+
+    // Mute buttons
+    stemIds.forEach((id) => {
+      const muteBtn = document.querySelector(`[data-stem-mute="${id}"]`);
+      muteBtn?.addEventListener('click', () => toggleMute(id));
+    });
+
+    // Loop the audio
+    audioElements.forEach(audio => {
+      audio.addEventListener('ended', () => {
+        if (isPlaying) {
+          // Restart all audios in sync
+          audioElements.forEach(a => {
+            a.currentTime = 0;
+            a.play();
+          });
+        }
+      });
+    });
+  });
+</script>
