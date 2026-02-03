@@ -1,18 +1,5 @@
 ---
-interface Stem {
-  id: string;
-  name: string;
-  file: string;
-}
-
-const stems: Stem[] = [
-  { id: "vocals", name: "Vocals", file: "/demo/Billie_Eilish_-_bad_guy_Vocals_by_vipremixer_q5xbFCP.wav" },
-  { id: "drums", name: "Drums", file: "/demo/Billie_Eilish_-_bad_guy_Drums_by_vipremixer.wav" },
-  { id: "bass", name: "Bass", file: "/demo/Billie_Eilish_-_bad_guy_Bass_by_vipremixer.wav" },
-  { id: "piano", name: "Piano", file: "/demo/Billie_Eilish_-_bad_guy_Piano_by_vipremixer.wav" },
-  { id: "guitar", name: "Guitar", file: "/demo/Billie_Eilish_-_bad_guy_Guitar_by_vipremixer.wav" },
-  { id: "other", name: "Other", file: "/demo/Billie_Eilish_-_bad_guy_Other_by_vipremixer.wav" },
-];
+import { STEMS_CONFIG, ANIMATION_DELAYS } from './VocalRemoverDemo/constants';
 ---
 
 <style>
@@ -188,7 +175,7 @@ const stems: Stem[] = [
       </div>
 
       <!-- Audio Elements (hidden) -->
-      {stems.map((stem) => (
+      {STEMS_CONFIG.map((stem) => (
         <audio id={`audio-${stem.id}`} preload="auto">
           <source src={stem.file} type="audio/wav" />
         </audio>
@@ -198,8 +185,8 @@ const stems: Stem[] = [
       <div class="bg-linear-to-b from-emerald-500/5 to-emerald-500/0 rounded-2xl p-6 border border-emerald-500/20">
         <h4 class="text-gray-300 font-semibold mb-4 text-sm uppercase tracking-wider">Componentes de Audio</h4>
         <div class="space-y-3">
-          {stems.map((stem) => (
-            <div class="stem-item flex items-center gap-4 group p-3 rounded-xl hover:bg-emerald-500/5 transition-all duration-300" data-stem={stem.id}>
+          {STEMS_CONFIG.map((stem, index) => (
+            <div class="stem-item flex items-center gap-4 group p-3 rounded-xl hover:bg-emerald-500/5 transition-all duration-300" data-stem={stem.id} style={`animation-delay: ${ANIMATION_DELAYS[index]}s`}>
               <!-- Icon -->
               <div
                 class="w-11 h-11 bg-linear-to-br from-emerald-400/40 to-slate-600 rounded-full shrink-0 flex items-center justify-center border border-emerald-400/30 group-hover:border-emerald-400/60 transition-all"
@@ -268,200 +255,5 @@ const stems: Stem[] = [
 </section>
 
 <script>
-  // Audio player state
-  let isPlaying = false;
-  let audioElements: HTMLAudioElement[] = [];
-  let muteStates = new Map<string, boolean>();
-
-  const stemIds = ["vocals", "drums", "bass", "piano", "guitar", "other"];
-
-  // Format time helper
-  function formatTime(seconds: number): string {
-    if (isNaN(seconds)) return '0:00';
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  }
-
-  // Initialize audio elements
-  function initAudio() {
-    stemIds.forEach((id) => {
-      const audio = document.getElementById(`audio-${id}`) as HTMLAudioElement;
-      if (audio) {
-        audioElements.push(audio);
-        muteStates.set(id, false);
-        
-        // Update progress bar and time
-        audio.addEventListener('timeupdate', () => {
-          const progressBar = document.querySelector(`[data-progress="${id}"]`) as HTMLElement;
-          const totalProgress = document.getElementById('totalProgress') as HTMLElement;
-          const currentTimeEl = document.getElementById('currentTime');
-          const durationEl = document.getElementById('duration');
-          
-          if (progressBar && audio.duration) {
-            const progress = (audio.currentTime / audio.duration) * 100;
-            progressBar.style.width = `${progress}%`;
-          }
-          
-          if (totalProgress && audio.duration) {
-            const progress = (audio.currentTime / audio.duration) * 100;
-            totalProgress.style.width = `${progress}%`;
-          }
-          
-          if (currentTimeEl) {
-            currentTimeEl.textContent = formatTime(audio.currentTime);
-          }
-        });
-
-        // Set duration once loaded
-        audio.addEventListener('loadedmetadata', () => {
-          const durationEl = document.getElementById('duration');
-          if (durationEl) {
-            durationEl.textContent = formatTime(audio.duration);
-          }
-        });
-      }
-    });
-  }
-
-  // Play/Pause functionality
-  function togglePlayPause() {
-    const playIcon = document.getElementById('playIcon');
-    const pauseIcon = document.getElementById('pauseIcon');
-    const playBtn = document.getElementById('playPauseBtn');
-
-    if (isPlaying) {
-      // Pause all
-      audioElements.forEach(audio => audio.pause());
-      playIcon?.classList.remove('hidden');
-      pauseIcon?.classList.add('hidden');
-      playBtn?.classList.remove('pulse-active');
-    } else {
-      // Play all in sync
-      audioElements.forEach((audio, index) => {
-        // Sync all audios to start at the same time
-        if (audio.readyState >= 2) { // HAVE_CURRENT_DATA
-          audio.play().catch(err => console.error(`Error playing audio ${index}:`, err));
-        } else {
-          audio.addEventListener('canplay', () => {
-            audio.play().catch(err => console.error(`Error playing audio ${index}:`, err));
-          }, { once: true });
-        }
-      });
-      playIcon?.classList.add('hidden');
-      pauseIcon?.classList.remove('hidden');
-      playBtn?.classList.add('pulse-active');
-    }
-
-    isPlaying = !isPlaying;
-  }
-
-  // Stop functionality
-  function stopAudio() {
-    audioElements.forEach(audio => {
-      audio.pause();
-      audio.currentTime = 0;
-    });
-    
-    isPlaying = false;
-    const playIcon = document.getElementById('playIcon');
-    const pauseIcon = document.getElementById('pauseIcon');
-    const playBtn = document.getElementById('playPauseBtn');
-    
-    playIcon?.classList.remove('hidden');
-    pauseIcon?.classList.add('hidden');
-    playBtn?.classList.remove('pulse-active');
-    
-    // Reset progress bars
-    document.querySelectorAll('[data-progress]').forEach(bar => {
-      (bar as HTMLElement).style.width = '0%';
-    });
-    
-    const totalProgress = document.getElementById('totalProgress') as HTMLElement;
-    if (totalProgress) totalProgress.style.width = '0%';
-    
-    const currentTimeEl = document.getElementById('currentTime');
-    if (currentTimeEl) currentTimeEl.textContent = '0:00';
-  }
-
-  // Reset functionality
-  function resetAudio() {
-    audioElements.forEach(audio => {
-      audio.currentTime = 0;
-    });
-    
-    // Reset progress bars
-    document.querySelectorAll('[data-progress]').forEach(bar => {
-      (bar as HTMLElement).style.width = '0%';
-    });
-    
-    const totalProgress = document.getElementById('totalProgress') as HTMLElement;
-    if (totalProgress) totalProgress.style.width = '0%';
-    
-    const currentTimeEl = document.getElementById('currentTime');
-    if (currentTimeEl) currentTimeEl.textContent = '0:00';
-  }
-
-  // Mute/Unmute individual stem
-  function toggleMute(stemId: string) {
-    const audio = document.getElementById(`audio-${stemId}`) as HTMLAudioElement;
-    const button = document.querySelector(`[data-stem-mute="${stemId}"]`);
-    const volumeOn = button?.querySelector('.volume-on');
-    const volumeOff = button?.querySelector('.volume-off');
-
-    if (audio && button) {
-      const isMuted = muteStates.get(stemId) || false;
-      audio.muted = !isMuted;
-      muteStates.set(stemId, !isMuted);
-
-      // Update button styles with animation
-      if (!isMuted) {
-        button.classList.remove('from-emerald-600', 'to-emerald-700', 'hover:from-emerald-500', 'hover:to-emerald-600');
-        button.classList.add('from-slate-500', 'to-slate-600', 'hover:from-slate-400', 'hover:to-slate-500');
-        volumeOn?.classList.add('hidden');
-        volumeOff?.classList.remove('hidden');
-      } else {
-        button.classList.remove('from-slate-500', 'to-slate-600', 'hover:from-slate-400', 'hover:to-slate-500');
-        button.classList.add('from-emerald-600', 'to-emerald-700', 'hover:from-emerald-500', 'hover:to-emerald-600');
-        volumeOn?.classList.remove('hidden');
-        volumeOff?.classList.add('hidden');
-      }
-    }
-  }
-
-  // Initialize on page load
-  document.addEventListener('DOMContentLoaded', () => {
-    initAudio();
-
-    // Play/Pause button
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    playPauseBtn?.addEventListener('click', togglePlayPause);
-
-    // Stop button
-    const stopBtn = document.getElementById('stopBtn');
-    stopBtn?.addEventListener('click', stopAudio);
-
-    // Reset button
-    const resetBtn = document.getElementById('resetBtn');
-    resetBtn?.addEventListener('click', resetAudio);
-
-    // Mute buttons
-    stemIds.forEach((id) => {
-      const muteBtn = document.querySelector(`[data-stem-mute="${id}"]`);
-      muteBtn?.addEventListener('click', () => toggleMute(id));
-    });
-
-    // Loop the audio
-    audioElements.forEach(audio => {
-      audio.addEventListener('ended', () => {
-        if (isPlaying) {
-          // Restart all audios in sync
-          audioElements.forEach(a => {
-            a.currentTime = 0;
-            a.play();
-          });
-        }
-      });
-    });
-  });
+  import './VocalRemoverDemo/index.ts';
 </script>
