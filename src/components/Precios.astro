@@ -1,37 +1,23 @@
 <section class="w-full max-w-7xl mx-auto px-6 py-20">
   <div class="text-center mb-16">
-    <h2 class="text-4xl md:text-5xl font-bold text-pri mb-4">
-      Planes y Precios
-    </h2>
-    <p class="text-sec text-lg">
-      Elige el plan perfecto para tu creatividad musical
-    </p>
+    <h2 class="text-4xl md:text-5xl font-bold text-pri mb-4">Precios</h2>
+    <p class="text-sec text-lg">Selecciona el plan perfecto para ti.</p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="plans-container">
     <!-- Plan Productor -->
     <article
-      class="bg-tertiary border border-border-pri rounded-2xl p-8 flex flex-col hover:border-quaternary/50 transition-colors"
+      class="plan-card bg-tertiary border border-border-pri rounded-2xl p-8 flex flex-col hover:border-quaternary/50 transition-all cursor-pointer"
+      data-plan="productor"
     >
       <div class="mb-6">
         <h3 class="text-2xl font-semibold text-pri mb-4">Plan Productor</h3>
         <div class="flex items-start gap-1">
           <span class="text-pri text-2xl">$</span>
-          <span class="text-6xl font-bold text-pri">8</span>
-          <div class="flex flex-col">
-            <span class="text-2xl text-pri">.00</span>
-            <span class="text-sec text-sm line-through">$10/mes</span>
-          </div>
+          <span class="text-6xl font-bold text-pri">5</span>
+          <span class="text-2xl text-pri">/mes</span>
         </div>
-        <p class="text-sec mt-4">Por mes</p>
-      </div>
-
-      <div class="mb-8">
-        <p class="text-sec leading-relaxed">
-          Accede a nuestra IA para extraer vocal e instrumental. Además obtén <span
-            class="text-pri font-semibold">25 Créditos</span
-          >
-        </p>
+        <p class="text-sec mt-4">Se factura cada mes.</p>
       </div>
 
       <ul class="space-y-4 mb-8 grow">
@@ -42,11 +28,10 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
-          <span class="text-pri">Vocal Remover</span>
+          <span class="text-pri">Acceso a nuestra IA Vocal Remover</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -55,11 +40,10 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
-          <span class="text-pri">10 Procesos/día</span>
+          <span class="text-pri">15 Procesos por día</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -68,8 +52,7 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
           <span class="text-pri">Soporte 24/7</span>
@@ -77,32 +60,31 @@
       </ul>
 
       <button
-        class="w-full py-4 px-6 bg-fifth text-primary font-semibold rounded-full hover:opacity-90 transition-opacity"
+        class="w-full py-4 px-6 bg-fifth text-primary font-semibold rounded-md hover:opacity-90 transition-opacity"
       >
-        Suscribirme
+        Empezar
       </button>
     </article>
 
-    <!-- Plan DJ (Destacado) -->
+    <!-- Plan DJ (Recomendado) -->
     <article
-      class="bg-tertiary border-2 border-quaternary rounded-2xl p-8 flex flex-col relative shadow-lg shadow-quaternary/20 scale-105"
+      class="plan-card bg-tertiary border-2 border-quaternary rounded-2xl p-8 flex flex-col relative shadow-lg shadow-quaternary/20 scale-105 cursor-pointer transition-all"
+      data-plan="dj"
     >
+      <div
+        class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-quaternary text-pri px-4 py-1 rounded-full font-semibold text-sm"
+      >
+        Recomendado
+      </div>
+
       <div class="mb-6">
         <h3 class="text-2xl font-semibold text-quaternary mb-4">Plan DJ</h3>
         <div class="flex items-start gap-1">
           <span class="text-pri text-2xl">$</span>
           <span class="text-6xl font-bold text-pri">10</span>
-          <span class="text-2xl text-pri">.00</span>
+          <span class="text-2xl text-pri">/mes</span>
         </div>
-        <p class="text-sec mt-4">Por mes</p>
-      </div>
-
-      <div class="mb-8">
-        <p class="text-sec leading-relaxed">
-          Canjea tus créditos por remixes, sonidos etc. Incluye <span
-            class="text-pri font-semibold">100 Créditos</span
-          >.
-        </p>
+        <p class="text-sec mt-4">Se factura cada mes.</p>
       </div>
 
       <ul class="space-y-4 mb-8 grow">
@@ -115,10 +97,9 @@
             <circle cx="10" cy="10" r="10"></circle>
             <path
               fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
+              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
           </svg>
-          <span class="text-pri">Vip Remixer</span>
+          <span class="text-pri">Acceso a nuestra plataforma Vip Remixer</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -129,10 +110,9 @@
             <circle cx="10" cy="10" r="10"></circle>
             <path
               fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
+              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
           </svg>
-          <span class="text-pri">100 Créditos</span>
+          <span class="text-pri">100 Créditos para realizar compras</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -143,10 +123,9 @@
             <circle cx="10" cy="10" r="10"></circle>
             <path
               fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
+              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
           </svg>
-          <span class="text-pri">Vocal Remover</span>
+          <span class="text-pri">Acceso a nuestra IA Vocal Remover</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -157,10 +136,9 @@
             <circle cx="10" cy="10" r="10"></circle>
             <path
               fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
+              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
           </svg>
-          <span class="text-pri">2 Procesos/día</span>
+          <span class="text-pri">5 Procesos por día</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -171,23 +149,23 @@
             <circle cx="10" cy="10" r="10"></circle>
             <path
               fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
+              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
           </svg>
           <span class="text-pri">Soporte 24/7</span>
         </li>
       </ul>
 
       <button
-        class="w-full py-4 px-6 bg-quaternary text-pri font-semibold rounded-full hover:brightness-110 transition-all"
+        class="w-full py-4 px-6 bg-quaternary text-pri font-semibold rounded-md hover:brightness-110 transition-all"
       >
-        Suscribirme
+        Empezar
       </button>
     </article>
 
     <!-- Plan DJ / Productor -->
     <article
-      class="bg-tertiary border border-border-pri rounded-2xl p-8 flex flex-col hover:border-quaternary/50 transition-colors"
+      class="plan-card bg-tertiary border border-border-pri rounded-2xl p-8 flex flex-col hover:border-quaternary/50 transition-all cursor-pointer"
+      data-plan="combo"
     >
       <div class="mb-6">
         <h3 class="text-2xl font-semibold text-pri mb-4">
@@ -196,17 +174,9 @@
         <div class="flex items-start gap-1">
           <span class="text-pri text-2xl">$</span>
           <span class="text-6xl font-bold text-pri">20</span>
-          <span class="text-2xl text-pri">.00</span>
+          <span class="text-2xl text-pri">/mes</span>
         </div>
-        <p class="text-sec mt-4">Por mes</p>
-      </div>
-
-      <div class="mb-8">
-        <p class="text-sec leading-relaxed">
-          Acceso ilimitado a nuestra Plataforma. Este plan Incluye <span
-            class="text-pri font-semibold">200 Créditos</span
-          >
-        </p>
+        <p class="text-sec mt-4">Se factura cada mes.</p>
       </div>
 
       <ul class="space-y-4 mb-8 grow">
@@ -217,8 +187,7 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
           <span class="text-pri">Vip Remixer</span>
@@ -230,11 +199,10 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
-          <span class="text-pri">200 Créditos (+25 Bonus)</span>
+          <span class="text-pri">200 Créditos (+25 créditos)</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -243,11 +211,10 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
-          <span class="text-pri">Vocal Remover</span>
+          <span class="text-pri">Acceso a nuestra IA Vocal Remover</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -256,11 +223,10 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
-          <span class="text-pri">10 Procesos/día</span>
+          <span class="text-pri">15 Procesos por día</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -269,11 +235,10 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
-          <span class="text-pri">Acceso anticipado</span>
+          <span class="text-pri">Acceso anticipado a futuras Apps.</span>
         </li>
         <li class="flex items-center gap-3">
           <svg
@@ -282,8 +247,7 @@
             viewBox="0 0 20 20"
           >
             <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
             ></path>
           </svg>
           <span class="text-pri">Soporte 24/7</span>
@@ -291,10 +255,43 @@
       </ul>
 
       <button
-        class="w-full py-4 px-6 bg-fifth text-primary font-semibold rounded-full hover:opacity-90 transition-opacity"
+        class="w-full py-4 px-6 bg-fifth text-primary font-semibold rounded-md hover:opacity-90 transition-opacity"
       >
-        Suscribirme
+        Empezar
       </button>
     </article>
   </div>
 </section>
+
+<script>
+  const plansContainer = document.getElementById("plans-container");
+  const planCards = document.querySelectorAll(".plan-card");
+
+  planCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      // Remover clase seleccionada de todas las tarjetas
+      planCards.forEach((c) => {
+        c.classList.remove("selected");
+        c.classList.remove(
+          "scale-105",
+          "border-2",
+          "border-quaternary",
+          "shadow-lg",
+          "shadow-quaternary/20",
+        );
+        c.classList.add("border", "border-border-pri");
+      });
+
+      // Agregar clase seleccionada a la tarjeta clickeada
+      card.classList.add("selected");
+      card.classList.add(
+        "scale-105",
+        "border-2",
+        "border-quaternary",
+        "shadow-lg",
+        "shadow-quaternary/20",
+      );
+      card.classList.remove("border", "border-border-pri");
+    });
+  });
+</script>
