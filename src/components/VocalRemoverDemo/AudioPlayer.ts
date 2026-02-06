@@ -3,7 +3,6 @@
  */
 
 import { formatTime } from './utils';
-import { STEM_IDS } from './constants';
 import type { AudioPlayerState } from './types';
 
 export class AudioPlayer {
@@ -156,6 +155,19 @@ export class AudioPlayer {
    */
   getIsPlaying(): boolean {
     return this.isPlaying;
+  }
+
+  /**
+   * Salta a una posición específica (en porcentaje)
+   */
+  seek(percentage: number): void {
+    const firstAudio = Array.from(this.audioElements.values())[0];
+    if (!firstAudio || !firstAudio.duration) return;
+
+    const newTime = (percentage / 100) * firstAudio.duration;
+    this.audioElements.forEach(audio => {
+      audio.currentTime = newTime;
+    });
   }
 
   /**

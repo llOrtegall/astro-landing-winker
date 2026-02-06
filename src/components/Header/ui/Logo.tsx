@@ -1,7 +1,7 @@
 export function Logo() {
   return (
     <a href="#hero" aria-label="Ir al inicio">
-      <figure className="flex items-center gap-4">
+      <figure className="flex items-center gap-2">
         <img
           src="/logo.png"
           alt="Logo Winker"

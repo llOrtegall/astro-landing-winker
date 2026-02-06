@@ -7,6 +7,8 @@ import SectionContainer from "../components/SectionContainer.astro";
 import Precios from "../components/Precios.astro";
 import Blog from "../components/Blog.astro";
 import Contacto from "../components/Contacto.astro";
+import Faqs from "../components/faqs/Faqs.astro";
+import { StarsBackground } from "../components/inovacion/StarsBackground.tsx";
 ---
 
 <Layout title="Landing Page Winkermind">
@@ -15,9 +17,6 @@ import Contacto from "../components/Contacto.astro";
 	</SectionContainer>
 	<SectionContainer id="proyectos">
 		<Proyectos />
-	</SectionContainer>
-
-	<SectionContainer id="servicios">
 		<VocalRemoverDemo />
 	</SectionContainer>
 
@@ -27,9 +26,16 @@ import Contacto from "../components/Contacto.astro";
 
 	<SectionContainer id="blog">
 		<Blog />
+		<Faqs />
 	</SectionContainer>
 
 	<SectionContainer id="contacto">
 		<Contacto />
+		<div class="relative mt-8 h-65 w-full">
+			<StarsBackground client:visible className="rounded-2xl" pointerEvents={false} />
+			<div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+				<p class="text-center text-2xl font-normal tracking-tight  text-pri">La innovacion continua...</p>
+			</div>
+		</div>
 	</SectionContainer>
 </Layout>
