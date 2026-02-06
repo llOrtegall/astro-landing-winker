@@ -8,6 +8,7 @@ import Precios from "../components/Precios.astro";
 import Blog from "../components/Blog.astro";
 import Contacto from "../components/Contacto.astro";
 import Faqs from "../components/faqs/Faqs.astro";
+import { StarsBackground } from "../components/inovacion/StarsBackground.tsx";
 ---
 
 <Layout title="Landing Page Winkermind">
@@ -30,5 +31,8 @@ import Faqs from "../components/faqs/Faqs.astro";
 
 	<SectionContainer id="contacto">
 		<Contacto />
+		<div class="relative mt-8 h-65 w-full">
+			<StarsBackground client:visible className="rounded-2xl" pointerEvents={false} />
+		</div>
 	</SectionContainer>
 </Layout>
