@@ -1,7 +1,14 @@
+import { memo } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import "./styles.css";
 
-const faqs = [
+type FaqItemData = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+const faqs: FaqItemData[] = [
   {
     id: "vocal-remover",
     question: "¿Qué es Vocal Remover?",
@@ -46,34 +53,46 @@ const faqs = [
   },
 ];
 
+const ChevronIcon = memo(function ChevronIcon() {
+  return (
+    <svg
+      className="faq-icon-chevron"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+});
+
+const FaqItem = memo(function FaqItem({ item }: { item: FaqItemData }) {
+  return (
+    <Accordion.Item value={item.id} className="faq-item">
+      <Accordion.Header>
+        <Accordion.Trigger className="faq-trigger">
+          <span className="faq-question">{item.question}</span>
+          <span className="faq-icon" aria-hidden="true">
+            <ChevronIcon />
+          </span>
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="faq-content">
+        <div className="faq-answer">{item.answer}</div>
+      </Accordion.Content>
+    </Accordion.Item>
+  );
+});
+
 export default function Faqs() {
   return (
     <section className="faq-wrap">
       <Accordion.Root type="single" collapsible className="faq-root">
         {faqs.map((item) => (
-          <Accordion.Item key={item.id} value={item.id} className="faq-item">
-            <Accordion.Header>
-              <Accordion.Trigger className="faq-trigger">
-                <span className="faq-question">{item.question}</span>
-                <span className="faq-icon" aria-hidden="true">
-                  <svg
-                    className="faq-icon-chevron"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </Accordion.Trigger>
-            </Accordion.Header>
-            <Accordion.Content className="faq-content">
-              <div className="faq-answer">{item.answer}</div>
-            </Accordion.Content>
-          </Accordion.Item>
+          <FaqItem key={item.id} item={item} />
         ))}
       </Accordion.Root>
     </section>
