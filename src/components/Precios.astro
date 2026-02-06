@@ -1,3 +1,7 @@
+---
+import PricingCard from "./Precios/PricingCard.astro";
+---
+
 <section class="w-full max-w-7xl mx-auto px-6 py-20">
   <div class="text-center mb-16">
     <h2 class="text-4xl md:text-5xl font-bold text-pri mb-4">Precios</h2>
@@ -6,287 +10,45 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="plans-container">
     <!-- Plan Productor -->
-    <article
-      class="bg-[#2C2C32] rounded-2xl p-8 flex flex-col"
-      data-plan="productor"
-    >
-      <div class="mb-6 tracking-tighter">
-        <h3 class="text-lg font-medium text-pri mb-0">Plan Productor</h3>
-        <div class="flex items-start text-4xl text-pri">
-          <span class="">$5</span>
-          <span class="px-1">/</span>
-          <span class="">mes</span>
-        </div>
-        <p class="text-pri font-extralight text-sm pt-1">Se factura cada mes.</p>
-      </div>
-
-      <button
-        class="w-full py-3 px-5 bg-quaternary text-pri font-semibold 
-        rounded-xl hover:bg-white hover:text-primary cursor-pointer transition-colors ease-in-out duration-300"
-      >
-        Empezar
-      </button>
-
-      <ul class="space-y-2 mt-6 mb-4 grow">
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">Acceso a nuestra IA Vocal Remover</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">15 Procesos por día</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">Soporte 24/7</span>
-        </li>
-      </ul>
-    </article>
+    <PricingCard
+      title="Plan Productor"
+      price={5}
+      plan="productor"
+      features={[
+        "Acceso a nuestra IA Vocal Remover",
+        "15 Procesos por día",
+        "Soporte 24/7",
+      ]}
+    />
 
     <!-- Plan DJ (Recomendado) -->
-    <!-- <article
-      class="plan-card bg-tertiary rounded-2xl p-8 flex flex-col relative shadow-lg shadow-quaternary/20 scale-105 cursor-pointer transition-all"
-      data-plan="dj"
-    >
-      <div class="mb-6">
-        <h3 class="text-2xl font-semibold  mb-4">Plan DJ</h3>
-        <div class="flex items-start gap-1">
-          <span class="text-pri text-2xl">$</span>
-          <span class="text-4xl font-bold text-pri">10</span>
-          <span class="text-4xl text-pri">/mes</span>
-        </div>
-        <p class="text-sec mt-4">Se factura cada mes.</p>
-      </div>
-
-      <button
-        class="w-full py-4 px-6 bg-white text-black font-semibold rounded-md hover:brightness-110 transition-all"
-      >
-        Empezar
-      </button>
-
-      <ul class="space-y-4 mt-6 mb-4 grow">
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-quaternary shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10"></circle>
-            <path
-              fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
-          </svg>
-          <span class="text-pri">Acceso a Vip Remixer</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-quaternary shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10"></circle>
-            <path
-              fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
-          </svg>
-          <span class="text-pri">100 Créditos para realizar compras</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-quaternary shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10"></circle>
-            <path
-              fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
-          </svg>
-          <span class="text-pri">Acceso a nuestra IA Vocal Remover</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-quaternary shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10"></circle>
-            <path
-              fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
-          </svg>
-          <span class="text-pri">5 Procesos por día</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-quaternary shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10"></circle>
-            <path
-              fill="white"
-              d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"></path>
-          </svg>
-          <span class="text-pri">Soporte 24/7</span>
-        </li>
-      </ul>
-    </article> -->
+    <PricingCard
+      title="Plan DJ"
+      price={10}
+      plan="dj"
+      featured={true}
+      features={[
+        "Acceso a Vip Remixer",
+        "100 Créditos para realizar compras",
+        "Acceso a nuestra IA Vocal Remover",
+        "5 Procesos por día",
+        "Soporte 24/7",
+      ]}
+    />
 
     <!-- Plan DJ / Productor -->
-    <!-- <article
-      class="plan-card bg-tertiary border border-border-pri rounded-2xl p-8 flex flex-col  cursor-pointer"
-      data-plan="combo"
-    >
-      <div class="mb-6">
-        <h3 class="text-2xl font-semibold text-pri mb-4">
-          Plan DJ / Productor
-        </h3>
-        <div class="flex items-start gap-1">
-          <span class="text-pri text-2xl">$</span>
-          <span class="text-4xl font-bold text-pri">20</span>
-          <span class="text-4xl text-pri">/mes</span>
-        </div>
-        <p class="text-sec mt-4">Se factura cada mes.</p>
-      </div>
-
-      <button
-        class="w-full py-4 px-6 bg-fifth text-primary font-semibold rounded-md hover:opacity-90 transition-opacity"
-      >
-        Empezar
-      </button>
-
-      <ul class="space-y-4 mt-6 mb-4 grow">
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">Acceso a Vip Remixer</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">200 Créditos (+25 créditos)</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">Acceso a nuestra IA Vocal Remover</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">15 Procesos por día</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">Acceso anticipado a futuras Apps.</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <svg
-            class="w-6 h-6 text-pri shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="10" opacity="0.2"></circle>
-            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z"
-            ></path>
-          </svg>
-          <span class="text-pri">Soporte 24/7</span>
-        </li>
-      </ul>
-    </article> -->
+    <PricingCard
+      title="Plan DJ / Productor"
+      price={20}
+      plan="combo"
+      features={[
+        "Acceso a Vip Remixer",
+        "200 Créditos (+25 créditos)",
+        "Acceso a nuestra IA Vocal Remover",
+        "15 Procesos por día",
+        "Acceso anticipado a futuras Apps.",
+        "Soporte 24/7",
+      ]}
+    />
   </div>
 </section>
-
-<script>
-  const plansContainer = document.getElementById("plans-container");
-  const planCards = document.querySelectorAll(".plan-card");
-
-  planCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      // Remover clase seleccionada de todas las tarjetas
-      planCards.forEach((c) => {
-        c.classList.remove("selected");
-        c.classList.remove(
-          "scale-105",
-          "border-2",
-          "border-quaternary",
-          "shadow-lg",
-          "shadow-quaternary/20",
-        );
-        c.classList.add("border", "border-border-pri");
-      });
-
-      // Agregar clase seleccionada a la tarjeta clickeada
-      card.classList.add("selected");
-      card.classList.add(
-        "scale-105",
-        "border-2",
-        "border-quaternary",
-        "shadow-lg",
-        "shadow-quaternary/20",
-      );
-      card.classList.remove("border", "border-border-pri");
-    });
-  });
-</script>

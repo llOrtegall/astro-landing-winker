@@ -1,0 +1,61 @@
+---
+interface Props {
+  title: string;
+  price: number;
+  period?: string;
+  billingInfo?: string;
+  features: string[];
+  plan: string;
+  featured?: boolean;
+}
+
+const {
+  title,
+  price,
+  period = "mes",
+  billingInfo = "Se factura cada mes.",
+  features,
+  plan,
+  featured = false,
+} = Astro.props;
+---
+
+<article
+  class="bg-[#2C2C32] rounded-2xl p-8 flex flex-col h-full"
+  data-plan={plan}
+>
+  <div class="mb-6 tracking-tighter">
+    <h3 class="text-lg font-medium text-pri mb-0">{title}</h3>
+    <div class="flex items-start text-4xl text-pri">
+      <span>${price}</span>
+      <span class="px-1">/</span>
+      <span>{period}</span>
+    </div>
+    <p class="text-pri font-extralight text-sm pt-1">{billingInfo}</p>
+  </div>
+
+  <button
+    class="w-full py-3 px-5 bg-quaternary text-pri font-semibold
+    rounded-xl hover:bg-white hover:text-primary cursor-pointer transition-colors ease-in-out duration-300"
+  >
+    Empezar
+  </button>
+
+  <ul class="space-y-2 mt-6 mb-4 grow">
+    {
+      features.map((feature) => (
+        <li class="flex items-center gap-3">
+          <svg
+            class="w-6 h-6 text-pri shrink-0"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <circle cx="10" cy="10" r="10" opacity="0.2" />
+            <path d="M8.5 13.5L5 10l1.5-1.5L8.5 10.5 13 6l1.5 1.5L8.5 13.5z" />
+          </svg>
+          <span class="text-pri">{feature}</span>
+        </li>
+      ))
+    }
+  </ul>
+</article>
