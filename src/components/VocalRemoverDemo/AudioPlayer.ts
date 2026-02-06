@@ -3,7 +3,6 @@
  */
 
 import { formatTime } from './utils';
-import { STEM_IDS } from './constants';
 import type { AudioPlayerState } from './types';
 
 export class AudioPlayer {

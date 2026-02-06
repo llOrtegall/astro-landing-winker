@@ -18,11 +18,6 @@ export const NAV_ITEMS: readonly NavItem[] = [
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>'
   },
   { 
-    href: '#servicios', 
-    label: 'Servicios',
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'
-  },
-  { 
     href: '#precios', 
     label: 'Precios',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>'
@@ -47,11 +42,11 @@ export const OBSERVER_OPTIONS = {
 } as const;
 
 // CSS Classes - Desktop
-export const HEADER_BASE_CLASSES = 'mx-auto sticky rounded-md z-50 transition-all duration-700 ease-in-out bg-background/95 backdrop-blur-md';
-export const HEADER_SCROLLED_CLASSES = 'md:w-4xl md:top-6 md:border md:border-pri/10 md:bg-background/50 md:backdrop-blur px-4 md:px-12 top-0 md:rounded-md';
+export const HEADER_BASE_CLASSES = 'mx-auto sticky rounded-xl z-50 transition-all duration-500 ease-in-out bg-background/95 backdrop-blur-md';
+export const HEADER_SCROLLED_CLASSES = 'md:w-6xl md:top-6 md:border md:border-pri/5 md:bg-background/95 backdrop-blur px-4 md:px-12 top-0 md:rounded-xl';
 export const HEADER_INITIAL_CLASSES = 'md:w-7xl md:top-2 md:border-transparent md:bg-transparent px-4 md:px-12';
-export const SECTION_BASE_CLASSES = 'flex items-center justify-between transition-all duration-700 ease-in-out';
-export const NAV_ACTIVE_CLASSES = 'border-[0.5px] px-2 py-1 border-border-pri bg-tertiary rounded-full';
+export const SECTION_BASE_CLASSES = 'flex items-center justify-between transition-all duration-500 ease-in-out';
+export const NAV_ACTIVE_CLASSES = 'px-4 py-2 rounded-full bg-primary/60 text-primary font-medium';
 
 // Mobile Menu Classes
 export const MOBILE_MENU_CLASSES = 'fixed left-0 right-0 top-16 md:hidden bg-primary/95 backdrop-blur-md border-b border-border-pri/30 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-300 z-40';

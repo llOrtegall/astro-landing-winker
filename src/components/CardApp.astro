@@ -7,7 +7,6 @@ interface Props {
 
 const { title, description, color } = Astro.props;
 
-// Mapping de colores a clases completas de Tailwind
 const colorClasses = {
   yellow: {
     gradient: "to-yellow-400/60",
@@ -35,15 +34,15 @@ const classes = colorClasses[color];
 ---
 
 <div
-  class={`rounded-xl p-6 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% ${classes.gradient} to-120%`}
+  class={`rounded-xl p-4 bg-linear-to-br from-[#2C2C32] from-50% via-[#2C2C32] via-20% ${classes.gradient} to-120%`}
 >
   <div class="flex items-center justify-between mb-4">
     <div class="flex items-center gap-4">
       <div class="size-10 bg-white rounded-md"></div>
-      <h3 class="text-3xl font-normal text-white">{title}</h3>
+      <h3 class="text-xl font-normal text-white tracking-tighter">{title}</h3>
     </div>
     <button
-      class={`w-10 h-10 ${classes.button} rounded-full flex items-center justify-center transition shrink-0`}
+      class={`size-8 ${classes.button} rounded-full cursor-pointer flex items-center justify-center transition shrink-0`}
     >
       <svg
         class="w-5 h-5 text-slate-900"
