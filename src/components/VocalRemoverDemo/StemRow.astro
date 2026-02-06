@@ -34,9 +34,9 @@ const { name, id, spectrum, animationDelay } = Astro.props as Props;
   }
 
   .stem-label {
-    min-width: 3.5rem;
+    min-width: 4.5rem;
     padding: 0.25rem 0.5rem;
-    fontSize: 0.75rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: rgb(16, 185, 129);
     background: rgba(16, 185, 129, 0.2);
@@ -92,10 +92,17 @@ const { name, id, spectrum, animationDelay } = Astro.props as Props;
 
   .mute-btn:hover {
     transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.5);
   }
 
   .mute-btn.muted {
-    background: linear-gradient(135deg, rgb(71, 85, 101), rgb(55, 65, 81));
+    background: linear-gradient(135deg, rgb(100, 116, 139), rgb(71, 85, 101));
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0.6;
+  }
+
+  .mute-btn.muted:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(0, 0, 0, 0.4);
   }
 
   .icon {

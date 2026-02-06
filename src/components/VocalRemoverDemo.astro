@@ -1,16 +1,17 @@
 ---
-import { STEMS_CONFIG, ANIMATION_DELAYS } from './VocalRemoverDemo/constants';
-import vocalImg from '../assets/voice/vocal.webp';
-import drumsImg from '../assets/voice/drums.webp';
-import bassImg from '../assets/voice/bass.webp';
-import pianoImg from '../assets/voice/piano.webp';
-import guitarImg from '../assets/voice/guitar.webp';
-import otherImg from '../assets/voice/other.webp';
+import { STEMS_CONFIG, ANIMATION_DELAYS } from "./VocalRemoverDemo/constants";
+import vocalImg from "../assets/voice/vocal.webp";
+import drumsImg from "../assets/voice/drums.webp";
+import bassImg from "../assets/voice/bass.webp";
+import pianoImg from "../assets/voice/piano.webp";
+import guitarImg from "../assets/voice/guitar.webp";
+import otherImg from "../assets/voice/other.webp";
 
 // Componentes
-import ProgressBar from './VocalRemoverDemo/ProgressBar.astro';
-import ControlButtons from './VocalRemoverDemo/ControlButtons.astro';
-import StemRow from './VocalRemoverDemo/StemRow.astro';
+import Header from "./VocalRemoverDemo/Header.astro";
+import ProgressBar from "./VocalRemoverDemo/ProgressBar.astro";
+import ControlButtons from "./VocalRemoverDemo/ControlButtons.astro";
+import StemRow from "./VocalRemoverDemo/StemRow.astro";
 
 // Mapa de imágenes de espectro
 const spectrumMap: Record<string, any> = {
@@ -23,82 +24,78 @@ const spectrumMap: Record<string, any> = {
 };
 ---
 
-<style>
-  .section-container {
-    background: rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(71, 85, 101, 0.3);
-    border-radius: 1rem;
-    padding: 1.5rem;
-  }
-
-  .music-player {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .player-info {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .song-info {
-    flex: 1;
-  }
-
-  .song-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 0.75rem;
-  }
-
-  .stems-grid {
-    display: grid;
-    auto-rows: auto;
-    gap: 0.25rem;
-  }
-</style>
-
-<section class="section-container">
+<section class="mt-18">
   <h2 class="text-3xl font-normal text-white pb-8 tracking-tighter">
     Apps de Inteligencia Artificial
   </h2>
 
-  <!-- Audio Elements (hidden) -->
-  {STEMS_CONFIG.map((stem) => (
-    <audio id={`audio-${stem.id}`} preload="auto">
-      <source src={stem.file} type="audio/wav" />
-    </audio>
-  ))}
+  <section
+    class="bg-black/15 border border-slate-700/30 rounded-2xl px-10 py-16"
+  >
+    <!-- Header -->
+    <Header />
 
-  <!-- Music Player -->
-  <div class="music-player">
-    <div class="player-info">
-      <div class="song-info">
-        <p class="song-title">Billie Eilish - Bad Guy</p>
-        <ProgressBar />
+    <!-- Audio Elements (hidden) -->
+    {
+      STEMS_CONFIG.map((stem) => (
+        <audio id={`audio-${stem.id}`} preload="auto">
+          <source src={stem.file} type="audio/wav" />
+        </audio>
+      ))
+    }
+
+    <!-- Music Player -->
+    <div class="flex flex-col gap-4 mb-6">
+      <div class="flex gap-6 justify-between">
+        <div class="flex-1">
+          <p class="text-base font-semibold text-white mb-3">
+            Billie Eilish - Bad Guy
+          </p>
+          <ProgressBar />
+        </div>
+        <ControlButtons />
+
+        <div class="flex items-center gap-4">
+          <p class="font-normal tracking-tighter">Ir a Vocal Remover</p>
+          <a
+            href="https://vocalremover.org/"
+            target="_blank"
+            class="flex items-center justify-center text-emerald-500 hover:underline gap-1 border
+          border-emerald-500/30 size-10 rounded-full hover:bg-emerald-500/10 transition-all duration-300 hover:shadow-lg"
+          >
+            <svg
+              class="w-5 h-5 text-emerald-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
       </div>
-      <ControlButtons />
     </div>
-  </div>
 
-  <!-- Stems Grid -->
-  <div class="stems-grid">
-    {STEMS_CONFIG.map((stem, index) => (
-      <StemRow
-        name={stem.name}
-        id={stem.id}
-        spectrum={spectrumMap[stem.id].src}
-        animationDelay={ANIMATION_DELAYS[index]}
-      />
-    ))}
-  </div>
+    <!-- Stems Grid -->
+    <div class="grid auto-rows-auto gap-3">
+      {
+        STEMS_CONFIG.map((stem, index) => (
+          <StemRow
+            name={stem.name}
+            id={stem.id}
+            spectrum={spectrumMap[stem.id].src}
+            animationDelay={ANIMATION_DELAYS[index]}
+          />
+        ))
+      }
+    </div>
+  </section>
 </section>
 
 <script>
-  import './VocalRemoverDemo/index.ts';
+  import "./VocalRemoverDemo/index.ts";
 </script>

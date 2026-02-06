@@ -56,15 +56,13 @@ export class StemManager {
     if (!button) return;
 
     if (isMuted) {
-      // Estado muteado
-      button.classList.remove('from-emerald-600', 'to-emerald-700', 'hover:from-emerald-500', 'hover:to-emerald-600');
-      button.classList.add('from-slate-500', 'to-slate-600', 'hover:from-slate-400', 'hover:to-slate-500');
+      // Estado muteado - agregar clase y cambiar iconos
+      button.classList.add('muted');
       volumeOn?.classList.add('hidden');
       volumeOff?.classList.remove('hidden');
     } else {
-      // Estado activo
-      button.classList.remove('from-slate-500', 'to-slate-600', 'hover:from-slate-400', 'hover:to-slate-500');
-      button.classList.add('from-emerald-600', 'to-emerald-700', 'hover:from-emerald-500', 'hover:to-emerald-600');
+      // Estado activo - remover clase y cambiar iconos
+      button.classList.remove('muted');
       volumeOn?.classList.remove('hidden');
       volumeOff?.classList.add('hidden');
     }
