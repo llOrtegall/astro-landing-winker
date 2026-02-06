@@ -1,0 +1,46 @@
+---
+/**
+ * Componente de Barra de Progreso Principal
+ * Muestra el tiempo actual y permite hacer seek
+ */
+---
+
+<style>
+  .progress-bar {
+    height: 0.25rem;
+    background: linear-gradient(to right, rgba(16, 185, 129, 0.2), transparent);
+    border-radius: 9999px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: height 0.2s ease;
+  }
+
+  .progress-bar:hover {
+    height: 0.5rem;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, rgb(16, 185, 129), rgb(5, 150, 105));
+    width: 0%;
+    transition: width 0.05s linear;
+  }
+
+  .time-display {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: rgb(156, 163, 175);
+  }
+</style>
+
+<div class="flex flex-col gap-1">
+  <div id="mainProgressContainer" class="progress-bar">
+    <div id="totalProgress" class="progress-fill"></div>
+  </div>
+  <div class="time-display">
+    <span id="currentTime">0:00</span>
+    <span id="duration">0:00</span>
+  </div>
+</div>

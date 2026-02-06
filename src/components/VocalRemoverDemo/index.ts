@@ -29,22 +29,64 @@ export class VocalRemoverDemo {
    * Adjunta los listeners a los elementos del DOM
    */
   private attachEventListeners(): void {
-    // Botón Play/Pause
+    this.setupControlButtons();
+    this.setupProgressBars();
+    this.setupMuteButtons();
+  }
+
+  /**
+   * Configura los botones de control (Play, Stop, Reset)
+   */
+  private setupControlButtons(): void {
     document.getElementById('playPauseBtn')?.addEventListener('click', () => {
       this.togglePlayPause();
     });
 
-    // Botón Stop
     document.getElementById('stopBtn')?.addEventListener('click', () => {
       this.stop();
     });
 
-    // Botón Reset
     document.getElementById('resetBtn')?.addEventListener('click', () => {
       this.reset();
     });
+  }
 
-    // Botones de mute
+  /**
+   * Configura el seek en las barras de progreso (principal y de stems)
+   */
+  private setupProgressBars(): void {
+    // Barra de progreso principal
+    const mainProgressContainer = document.getElementById('mainProgressContainer') as HTMLElement;
+    if (mainProgressContainer) {
+      mainProgressContainer.addEventListener('click', (e) => {
+        this.handleProgressSeek(e, mainProgressContainer);
+      });
+    }
+
+    // Barras de progreso de stems
+    document.querySelectorAll('[data-progress]').forEach((bar) => {
+      const container = bar.parentElement as HTMLElement;
+      if (!container) return;
+
+      container.addEventListener('click', (e) => {
+        this.handleProgressSeek(e, container);
+      });
+    });
+  }
+
+  /**
+   * Maneja el evento de seek en cualquier barra de progreso
+   */
+  private handleProgressSeek(event: MouseEvent, container: HTMLElement): void {
+    const rect = container.getBoundingClientRect();
+    const percent = ((event.clientX - rect.left) / rect.width) * 100;
+    this.audioPlayer.seek(Math.max(0, Math.min(100, percent)));
+  }
+
+  /**
+   * Configura los botones de mute de cada stem
+   */
+  private setupMuteButtons(): void {
     STEM_IDS.forEach((id) => {
       const muteBtn = document.querySelector(`[data-stem-mute="${id}"]`);
       muteBtn?.addEventListener('click', () => {

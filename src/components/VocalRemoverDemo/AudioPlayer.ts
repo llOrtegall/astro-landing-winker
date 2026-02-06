@@ -158,6 +158,19 @@ export class AudioPlayer {
   }
 
   /**
+   * Salta a una posición específica (en porcentaje)
+   */
+  seek(percentage: number): void {
+    const firstAudio = Array.from(this.audioElements.values())[0];
+    if (!firstAudio || !firstAudio.duration) return;
+
+    const newTime = (percentage / 100) * firstAudio.duration;
+    this.audioElements.forEach(audio => {
+      audio.currentTime = newTime;
+    });
+  }
+
+  /**
    * Maneja el evento de fin de canción
    */
   private handleAudioEnd(): void {
