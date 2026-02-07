@@ -10,6 +10,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-
+  experimental: {
+    svgo: true
+  },
   integrations: [react()]
 });
