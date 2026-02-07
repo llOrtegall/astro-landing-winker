@@ -1,0 +1,93 @@
+---
+import FlacDownloader from '../../assets/logos/Flac_Downloader.svg';
+import Mp3Downloader from '../../assets/logos/Mp3_Downloader.svg';
+import Resourzly from '../../assets/logos/Resourzly.svg';
+import VipRemixer from '../../assets/logos/Vip_Remixer.svg';
+import VocalRemover from '../../assets/logos/Vocal_Remover.svg';
+import WShare from '../../assets/logos/wShare.svg';
+
+const logos = [
+  { Component: WShare, label: 'wShare' },
+  { Component: VipRemixer, label: 'Vip Remixer' },
+  { Component: Resourzly, label: 'Resourzly' },
+  { Component: FlacDownloader, label: 'Flac Downloader' },
+  { Component: Mp3Downloader, label: 'Mp3 Downloader' },
+  { Component: VocalRemover, label: 'Vocal Remover' },
+];
+---
+
+<section class="flex flex-col items-center justify-center gap-4 py-8 w-full overflow-hidden">
+  <h2 class="text-lg font-normal text-pri">Vista rapida nuestros proyectos</h2>
+
+  <div class="relative w-full">
+    <div
+      class="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-primary to-transparent z-10 pointer-events-none"
+    >
+    </div>
+    <div
+      class="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-primary to-transparent z-10 pointer-events-none"
+    >
+    </div>
+
+    <div class="flex animate-scroll">
+      <div class="flex gap-12 min-w-max px-3">
+        {logos.map(({ Component, label }) => (
+          <figure
+            class="px-6 py-4 rounded-xl transition-all duration-300 flex items-center justify-center logo-tile"
+          >
+            <Component class="h-10 w-auto" aria-hidden="true" />
+            <span class="sr-only">{label}</span>
+          </figure>
+        ))}
+      </div>
+
+      <div class="flex gap-12 min-w-max px-3">
+        {logos.map(({ Component, label }) => (
+          <figure
+            class="px-6 py-4 rounded-xl transition-all duration-300 flex items-center justify-center logo-tile"
+          >
+            <Component class="h-10 w-auto" aria-hidden="true" />
+            <span class="sr-only">{label}</span>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  .logo-tile {
+    opacity: 0.6;
+  }
+
+  .logo-tile :global(svg) {
+    filter: grayscale(1) saturate(0.6);
+    transition: filter 200ms ease, opacity 200ms ease, transform 200ms ease;
+  }
+
+  .logo-tile:hover {
+    opacity: 1;
+  }
+
+  .logo-tile:hover :global(svg) {
+    filter: none;
+    transform: translateY(-1px);
+  }
+</style>

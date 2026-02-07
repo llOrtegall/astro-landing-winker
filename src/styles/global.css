@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Geist';
-  src: url('../assets/Geist-Variable.ttf') format('truetype');
+  font-family: "Geist";
+  src: url("../assets/Geist-Variable.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
 }
 
 @theme {
-  --color-primary: #18181B;
-  --color-secondary: #5951A3;
+  --color-primary: #18181b;
+  --color-secondary: #5951a3;
   --color-tertiary: #212124;
-  --color-quaternary: #5F3CF7;
-  --color-fifth: #D9D9D9;
-  --color-pri: #FFFFFF;
-  --color-sec: #98989A;
+  --color-quaternary: #5f3cf7;
+  --color-fifth: #d9d9d9;
+  --color-pri: #ffffff;
+  --color-sec: #98989a;
   --color-border-pri: #353537;
-  --color-sixth: #39393F;
-  --color-seventh: #A1A1A1;
+  --color-sixth: #39393f;
+  --color-seventh: #a1a1a1;
 }
 
 :root {

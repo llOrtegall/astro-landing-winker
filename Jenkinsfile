@@ -42,7 +42,7 @@ pipeline {
                     steps {
                         sh '''
                            echo "🛑 Stopping Docker services..."
-                           docker compose -f config/docker-compose.yaml down
+                           docker compose -f config/docker-compose.yaml down -v --remove-orphans
                            echo "✓ Services stopped"
                         '''
                     }

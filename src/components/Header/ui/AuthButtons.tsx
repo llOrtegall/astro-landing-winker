@@ -3,17 +3,24 @@ export interface AuthButtonsProps {
   className?: string;
 }
 
-export function AuthButtons({ isMobile = false, className = '' }: AuthButtonsProps) {
+export function AuthButtons({
+  isMobile = false,
+  className = '',
+}: AuthButtonsProps) {
   if (isMobile) {
     return (
-      <div className={`flex flex-col gap-2 px-4 py-4 border-t border-border-pri/20 ${className}`}>
-        <button 
-          aria-label="Iniciar sesión" 
+      <div
+        className={`flex flex-col gap-2 px-4 py-4 border-t border-border-pri/20 ${className}`}
+      >
+        <button
+          type="button"
+          aria-label="Iniciar sesión"
           className="w-full px-3 py-2 text-pri hover:text-pri transition-colors text-sm border rounded-full border-gray-600"
         >
           Login
         </button>
         <button
+          type="button"
           className="w-full px-3 py-2 font-normal text-pri bg-quaternary rounded-full hover:brightness-110 transition-all duration-200 text-sm"
           aria-label="Registrarse"
         >
@@ -25,8 +32,15 @@ export function AuthButtons({ isMobile = false, className = '' }: AuthButtonsPro
 
   return (
     <div className="hidden md:flex gap-4 items-center font-normal text-sec">
-      <button aria-label="Iniciar sesión" className="hover:underline cursor-pointer">Login</button>
       <button
+        type="button"
+        aria-label="Iniciar sesión"
+        className="hover:underline cursor-pointer"
+      >
+        Login
+      </button>
+      <button
+        type="button"
         className="cursor-pointer px-3 py-2 font-normal text-pri bg-quaternary rounded-full hover:brightness-110 transition-all duration-200"
         aria-label="Registrarse"
       >

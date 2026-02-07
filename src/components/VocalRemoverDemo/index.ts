@@ -1,8 +1,3 @@
-/**
- * Inicializador del demo de Vocal Remover
- * Orquesta toda la lógica de reproducción y gestión de stems
- */
-
 import { AudioPlayer } from './AudioPlayer';
 import { StemManager } from './StemManager';
 import { STEM_IDS } from './constants';
@@ -56,7 +51,9 @@ export class VocalRemoverDemo {
    */
   private setupProgressBars(): void {
     // Barra de progreso principal
-    const mainProgressContainer = document.getElementById('mainProgressContainer') as HTMLElement;
+    const mainProgressContainer = document.getElementById(
+      'mainProgressContainer',
+    ) as HTMLElement;
     if (mainProgressContainer) {
       mainProgressContainer.addEventListener('click', (e) => {
         this.handleProgressSeek(e, mainProgressContainer);

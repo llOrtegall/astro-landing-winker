@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { OBSERVER_OPTIONS, SCROLL_THRESHOLD } from "../types";
+import { useEffect, useState } from 'react';
+import { OBSERVER_OPTIONS, SCROLL_THRESHOLD } from '../types';
 
 export function useScrollDetection(threshold: number = SCROLL_THRESHOLD) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,7 +41,9 @@ export function useSectionObserver() {
       });
     }, OBSERVER_OPTIONS);
 
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach(section => {
+      observer.observe(section);
+    });
 
     return () => observer.disconnect();
   }, []);

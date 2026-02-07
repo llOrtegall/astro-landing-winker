@@ -48,7 +48,9 @@ export class AudioPlayer {
    * Actualiza el progreso de un stem
    */
   private updateProgress(stemId: string, audio: HTMLAudioElement): void {
-    const progressBar = document.querySelector(`[data-progress="${stemId}"]`) as HTMLElement;
+    const progressBar = document.querySelector(
+      `[data-progress="${stemId}"]`,
+    ) as HTMLElement;
     if (progressBar && audio.duration) {
       const progress = (audio.currentTime / audio.duration) * 100;
       progressBar.style.width = `${progress}%`;
@@ -77,11 +79,21 @@ export class AudioPlayer {
     // Sincronizar reproducción
     this.audioElements.forEach((audio, index) => {
       if (audio.readyState >= 2) {
-        audio.play().catch(err => console.error(`Error playing audio ${index}:`, err));
+        audio
+          .play()
+          .catch((err) => console.error(`Error playing audio ${index}:`, err));
       } else {
-        audio.addEventListener('canplay', () => {
-          audio.play().catch(err => console.error(`Error playing audio ${index}:`, err));
-        }, { once: true });
+        audio.addEventListener(
+          'canplay',
+          () => {
+            audio
+              .play()
+              .catch((err) =>
+                console.error(`Error playing audio ${index}:`, err),
+              );
+          },
+          { once: true },
+        );
       }
     });
 
@@ -95,7 +107,9 @@ export class AudioPlayer {
     if (!this.isPlaying) return;
 
     this.isPlaying = false;
-    this.audioElements.forEach(audio => audio.pause());
+    this.audioElements.forEach((audio) => {
+      audio.pause();
+    });
     this.stopProgressAnimation();
     this.notifyStateChange();
   }
@@ -104,7 +118,7 @@ export class AudioPlayer {
    * Detiene la reproducción y reinicia todos los audios a 0
    */
   stop(): void {
-    this.audioElements.forEach(audio => {
+    this.audioElements.forEach((audio) => {
       audio.pause();
       audio.currentTime = 0;
     });
@@ -119,7 +133,7 @@ export class AudioPlayer {
    * Reinicia todos los audios a tiempo 0 sin detener la reproducción
    */
   reset(): void {
-    this.audioElements.forEach(audio => {
+    this.audioElements.forEach((audio) => {
       audio.currentTime = 0;
     });
 
@@ -165,7 +179,7 @@ export class AudioPlayer {
     if (!firstAudio || !firstAudio.duration) return;
 
     const newTime = (percentage / 100) * firstAudio.duration;
-    this.audioElements.forEach(audio => {
+    this.audioElements.forEach((audio) => {
       audio.currentTime = newTime;
     });
   }
@@ -176,7 +190,7 @@ export class AudioPlayer {
   private handleAudioEnd(): void {
     if (this.isPlaying) {
       // Loop automático
-      this.audioElements.forEach(audio => {
+      this.audioElements.forEach((audio) => {
         audio.currentTime = 0;
         audio.play();
       });
@@ -193,7 +207,9 @@ export class AudioPlayer {
       const firstAudio = Array.from(this.audioElements.values())[0];
       if (firstAudio?.duration) {
         const progress = (firstAudio.currentTime / firstAudio.duration) * 100;
-        const totalProgress = document.getElementById('totalProgress') as HTMLElement;
+        const totalProgress = document.getElementById(
+          'totalProgress',
+        ) as HTMLElement;
         const currentTimeEl = document.getElementById('currentTime');
 
         if (totalProgress) {
@@ -225,11 +241,13 @@ export class AudioPlayer {
    * Reinicia los visores de progreso
    */
   private resetProgressBars(): void {
-    document.querySelectorAll('[data-progress]').forEach(bar => {
+    document.querySelectorAll('[data-progress]').forEach((bar) => {
       (bar as HTMLElement).style.width = '0%';
     });
 
-    const totalProgress = document.getElementById('totalProgress') as HTMLElement;
+    const totalProgress = document.getElementById(
+      'totalProgress',
+    ) as HTMLElement;
     if (totalProgress) totalProgress.style.width = '0%';
 
     const currentTimeEl = document.getElementById('currentTime');
