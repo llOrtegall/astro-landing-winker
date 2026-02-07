@@ -1,11 +1,14 @@
 ---
+import type { SvgComponent } from 'astro/types';
+
 interface Props {
   title: string;
   description: string;
   color: "yellow" | "slate" | "red" | "blue" | "green";
+  Icono: SvgComponent & ImageMetadata;
 }
 
-const { title, description, color } = Astro.props;
+const { title, description, color, Icono } = Astro.props;
 
 const colorClasses = {
   yellow: {
@@ -38,14 +41,16 @@ const classes = colorClasses[color];
 >
   <div class="flex items-center justify-between mb-4">
     <div class="flex items-center gap-4">
-      <div class="size-10 bg-white rounded-md"></div>
+      <figure class="">
+        <Icono class="h-10 w-auto rounded-md" aria-hidden="true" />
+      </figure>
       <h3 class="text-xl font-normal text-white tracking-tighter">{title}</h3>
     </div>
     <button
       class={`size-8 ${classes.button} rounded-full cursor-pointer flex items-center justify-center transition shrink-0`}
     >
       <svg
-        class="w-5 h-5 text-slate-900"
+        class="w-5 h-5 text-white"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
