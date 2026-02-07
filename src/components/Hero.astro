@@ -5,7 +5,7 @@ import ProjectsCarousel from './ui/ProjectsCarousel.astro';
 
 <section class="relative h-full flex flex-col items-center justify-center pt-20">
   <div
-    class="absolute inset-0 -z-10 h-153 w-full
+    class="absolute inset-0 -z-10 2xl:h-153 lg:h-147 w-full
       [background:radial-gradient(120%_100%_at_50%_10%,var(--color-primary)_42%,var(--color-secondary)_100%)] rounded-b-3xl"
   >
   </div>
@@ -40,11 +40,12 @@ import ProjectsCarousel from './ui/ProjectsCarousel.astro';
   <div
     class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
   >
-    <button
+    <a
+    href="#proyectos"
       class="cursor-pointer bg-quaternary hover:bg-white hover:text-gray-800 text-white font-semibold px-8 py-3 rounded-full transition-colors ease-in-out duration-500"
     >
       Explorar Proyectos
-    </button>
+  </a>
     <button
       class="cursor-pointer bg-tertiary text-white font-semibold px-8 py-3 rounded-full transition border border-gray-600 hover:border-gray-900 ease-in-out duration-500"
     >

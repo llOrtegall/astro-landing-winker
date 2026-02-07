@@ -6,9 +6,10 @@ interface Props {
   description: string;
   color: 'yellow' | 'slate' | 'red' | 'blue' | 'green';
   Icono: SvgComponent & ImageMetadata;
+  link: string;
 }
 
-const { title, description, color, Icono } = Astro.props;
+const { title, description, color, Icono, link } = Astro.props;
 
 const colorClasses = {
   yellow: {
@@ -44,9 +45,12 @@ const classes = colorClasses[color];
       <figure class="">
         <Icono class="h-10 w-auto rounded-md" aria-hidden="true" />
       </figure>
-      <h3 class="text-xl font-normal text-white tracking-tighter">{title}</h3>
+      <a href={link} target="_blank" rel="noopener noreferrer" class="text-xl font-normal text-white tracking-tighter">{title}</a>
     </div>
-    <button
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
       class={`size-8 ${classes.button} rounded-full cursor-pointer flex items-center justify-center transition shrink-0`}
     >
       <svg
@@ -61,7 +65,7 @@ const classes = colorClasses[color];
           stroke-width="2.5"
           d="M9 5l7 7-7 7"></path>
       </svg>
-    </button>
+    </a>
   </div>
   <p class="text-gray-400 text-sm leading-relaxed">
     {description}
