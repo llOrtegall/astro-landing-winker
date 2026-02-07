@@ -56,7 +56,9 @@ export class VocalRemoverDemo {
    */
   private setupProgressBars(): void {
     // Barra de progreso principal
-    const mainProgressContainer = document.getElementById('mainProgressContainer') as HTMLElement;
+    const mainProgressContainer = document.getElementById(
+      'mainProgressContainer',
+    ) as HTMLElement;
     if (mainProgressContainer) {
       mainProgressContainer.addEventListener('click', (e) => {
         this.handleProgressSeek(e, mainProgressContainer);

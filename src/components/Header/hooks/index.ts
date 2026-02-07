@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { OBSERVER_OPTIONS, SCROLL_THRESHOLD } from "../types";
+import { useEffect, useState } from 'react';
+import { OBSERVER_OPTIONS, SCROLL_THRESHOLD } from '../types';
 
 export function useScrollDetection(threshold: number = SCROLL_THRESHOLD) {
   const [isScrolled, setIsScrolled] = useState(false);

@@ -1,4 +1,13 @@
-import { HEADER_BASE_CLASSES, HEADER_INITIAL_CLASSES, HEADER_SCROLLED_CLASSES, NAV_ITEMS, SECTION_BASE_CLASSES, MOBILE_MENU_CLASSES, MOBILE_NAV_CLASSES, MOBILE_OVERLAY_CLASSES } from './types';
+import {
+  HEADER_BASE_CLASSES,
+  HEADER_INITIAL_CLASSES,
+  HEADER_SCROLLED_CLASSES,
+  NAV_ITEMS,
+  SECTION_BASE_CLASSES,
+  MOBILE_MENU_CLASSES,
+  MOBILE_NAV_CLASSES,
+  MOBILE_OVERLAY_CLASSES,
+} from './types';
 import { useScrollDetection, useSectionObserver } from './hooks';
 import { useCallback, useMemo, useState, useEffect } from 'react';
 
@@ -9,15 +18,18 @@ export default function HeaderNav() {
   const [activeSection, setActiveSection] = useSectionObserver();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleNavClick = useCallback((href: string) => {
-    const targetId = href.replace('#', '');
-    setActiveSection(targetId);
-    // Cerrar menú móvil al hacer click en un link
-    setIsMobileMenuOpen(false);
-  }, [setActiveSection]);
+  const handleNavClick = useCallback(
+    (href: string) => {
+      const targetId = href.replace('#', '');
+      setActiveSection(targetId);
+      // Cerrar menú móvil al hacer click en un link
+      setIsMobileMenuOpen(false);
+    },
+    [setActiveSection],
+  );
 
   const handleToggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen(prev => !prev);
+    setIsMobileMenuOpen((prev) => !prev);
   }, []);
 
   // Cerrar menú móvil cuando se redimensiona la ventana a desktop
@@ -48,8 +60,9 @@ export default function HeaderNav() {
   }, [isMobileMenuOpen]);
 
   const headerClasses = useMemo(() => {
-    return `${HEADER_BASE_CLASSES} ${isScrolled ? HEADER_SCROLLED_CLASSES : HEADER_INITIAL_CLASSES
-      }`;
+    return `${HEADER_BASE_CLASSES} ${
+      isScrolled ? HEADER_SCROLLED_CLASSES : HEADER_INITIAL_CLASSES
+    }`;
   }, [isScrolled]);
 
   const sectionClasses = useMemo(() => {
@@ -63,7 +76,11 @@ export default function HeaderNav() {
           <Logo />
 
           {/* Desktop Navigation */}
-          <nav role="navigation" aria-label="Navegación principal" className="hidden md:block">
+          <nav
+            role="navigation"
+            aria-label="Navegación principal"
+            className="hidden md:block"
+          >
             <ul className="flex items-center gap-4">
               {NAV_ITEMS.map((item) => (
                 <NavLink
@@ -81,7 +98,7 @@ export default function HeaderNav() {
           <AuthButtons isMobile={false} />
 
           {/* Mobile Hamburger Menu */}
-          <HamburgerMenu 
+          <HamburgerMenu
             isOpen={isMobileMenuOpen}
             onToggle={handleToggleMobileMenu}
           />
@@ -90,7 +107,7 @@ export default function HeaderNav() {
 
       {/* Mobile Overlay */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           className={MOBILE_OVERLAY_CLASSES}
           onClick={() => setIsMobileMenuOpen(false)}
           role="presentation"
@@ -99,9 +116,9 @@ export default function HeaderNav() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <nav 
+        <nav
           id="mobile-nav"
-          role="navigation" 
+          role="navigation"
           aria-label="Navegación móvil"
           className={MOBILE_MENU_CLASSES}
         >

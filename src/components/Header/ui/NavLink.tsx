@@ -1,7 +1,16 @@
-import { useCallback } from "react";
-import { NAV_ACTIVE_CLASSES, MOBILE_NAV_ITEM_CLASSES, type NavLinkProps } from "../types";
+import { useCallback } from 'react';
+import {
+  NAV_ACTIVE_CLASSES,
+  MOBILE_NAV_ITEM_CLASSES,
+  type NavLinkProps,
+} from '../types';
 
-export function NavLink({ item, isActive, onClick, isMobile = false }: NavLinkProps) {
+export function NavLink({
+  item,
+  isActive,
+  onClick,
+  isMobile = false,
+}: NavLinkProps) {
   const handleClick = useCallback(() => {
     onClick(item.href);
   }, [item.href, onClick]);
@@ -16,8 +25,8 @@ export function NavLink({ item, isActive, onClick, isMobile = false }: NavLinkPr
           aria-current={isActive ? 'page' : undefined}
         >
           {item.icon && (
-            <span 
-              className="shrink-0" 
+            <span
+              className="shrink-0"
               dangerouslySetInnerHTML={{ __html: item.icon }}
               aria-hidden="true"
             />
@@ -29,7 +38,9 @@ export function NavLink({ item, isActive, onClick, isMobile = false }: NavLinkPr
   }
 
   return (
-    <li className={`transition-all hidden md:block ${isActive ? NAV_ACTIVE_CLASSES : ''}`}>
+    <li
+      className={`transition-all hidden md:block ${isActive ? NAV_ACTIVE_CLASSES : ''}`}
+    >
       <a
         href={item.href}
         onClick={handleClick}

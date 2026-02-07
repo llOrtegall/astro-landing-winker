@@ -11,7 +11,7 @@ export class StemManager {
    * Inicializa los estados de mute para todos los stems
    */
   initialize(stemIds: string[]): void {
-    stemIds.forEach(id => {
+    stemIds.forEach((id) => {
       this.muteStates.set(id, false);
     });
   }

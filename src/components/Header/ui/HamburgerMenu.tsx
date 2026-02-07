@@ -6,7 +6,11 @@ export interface HamburgerMenuProps {
   ariaLabel?: string;
 }
 
-export function HamburgerMenu({ isOpen, onToggle, ariaLabel = 'Menú de navegación' }: HamburgerMenuProps) {
+export function HamburgerMenu({
+  isOpen,
+  onToggle,
+  ariaLabel = 'Menú de navegación',
+}: HamburgerMenuProps) {
   const handleClick = useCallback(() => {
     onToggle();
   }, [onToggle]);

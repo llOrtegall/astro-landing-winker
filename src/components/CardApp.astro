@@ -4,7 +4,7 @@ import type { SvgComponent } from 'astro/types';
 interface Props {
   title: string;
   description: string;
-  color: "yellow" | "slate" | "red" | "blue" | "green";
+  color: 'yellow' | 'slate' | 'red' | 'blue' | 'green';
   Icono: SvgComponent & ImageMetadata;
 }
 
@@ -12,24 +12,24 @@ const { title, description, color, Icono } = Astro.props;
 
 const colorClasses = {
   yellow: {
-    gradient: "to-yellow-400/60",
-    button: "bg-yellow-500 hover:bg-yellow-400",
+    gradient: 'to-yellow-400/60',
+    button: 'bg-yellow-500 hover:bg-yellow-400',
   },
   slate: {
-    gradient: "to-slate-400/60",
-    button: "bg-slate-500 hover:bg-slate-400",
+    gradient: 'to-slate-400/60',
+    button: 'bg-slate-500 hover:bg-slate-400',
   },
   red: {
-    gradient: "to-red-400/60",
-    button: "bg-red-500 hover:bg-red-400",
+    gradient: 'to-red-400/60',
+    button: 'bg-red-500 hover:bg-red-400',
   },
   blue: {
-    gradient: "to-blue-400/60",
-    button: "bg-blue-500 hover:bg-blue-400",
+    gradient: 'to-blue-400/60',
+    button: 'bg-blue-500 hover:bg-blue-400',
   },
   green: {
-    gradient: "to-green-400/60",
-    button: "bg-green-500 hover:bg-green-400",
+    gradient: 'to-green-400/60',
+    button: 'bg-green-500 hover:bg-green-400',
   },
 };
 

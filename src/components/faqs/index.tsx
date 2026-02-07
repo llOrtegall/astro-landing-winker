@@ -1,6 +1,6 @@
-import { memo } from "react";
-import * as Accordion from "@radix-ui/react-accordion";
-import "./styles.css";
+import { memo } from 'react';
+import * as Accordion from '@radix-ui/react-accordion';
+import './styles.css';
 
 type FaqItemData = {
   id: string;
@@ -10,46 +10,46 @@ type FaqItemData = {
 
 const faqs: FaqItemData[] = [
   {
-    id: "vocal-remover",
-    question: "¿Qué es Vocal Remover?",
+    id: 'vocal-remover',
+    question: '¿Qué es Vocal Remover?',
     answer:
-      "Vocal Remover es una plataforma que ofrece servicios de inteligencia artificial para separar las voces e instrumentales de una cancion.",
+      'Vocal Remover es una plataforma que ofrece servicios de inteligencia artificial para separar las voces e instrumentales de una cancion.',
   },
   {
-    id: "vip-remixer",
-    question: "¿Qué es Vip Remixer?",
+    id: 'vip-remixer',
+    question: '¿Qué es Vip Remixer?',
     answer:
-      "Vip Remixer es una plataforma que ofrece remixes exclusivos para DJ.",
+      'Vip Remixer es una plataforma que ofrece remixes exclusivos para DJ.',
   },
   {
-    id: "creditos",
-    question: "¿Cómo puedo usar mis creditos?",
+    id: 'creditos',
+    question: '¿Cómo puedo usar mis creditos?',
     answer:
-      "Los creditos se pueden utilizar para descargar remixes, sonidos y otros servicios dentro de la plataforma que acepte creditos.",
+      'Los creditos se pueden utilizar para descargar remixes, sonidos y otros servicios dentro de la plataforma que acepte creditos.',
   },
   {
-    id: "planes",
-    question: "¿Cuál es la diferencia entre los planes?",
+    id: 'planes',
+    question: '¿Cuál es la diferencia entre los planes?',
     answer:
-      "El plan Productor ofrece acceso a Vocal Remover. Con el plan DJ obtienes acceso a remixes y sonidos exclusivos y 100 creditos. El plan DJ/Productor combina ambos servicios y otorga 200 creditos mas una bonificacion de 25 creditos adicionales.",
+      'El plan Productor ofrece acceso a Vocal Remover. Con el plan DJ obtienes acceso a remixes y sonidos exclusivos y 100 creditos. El plan DJ/Productor combina ambos servicios y otorga 200 creditos mas una bonificacion de 25 creditos adicionales.',
   },
   {
-    id: "pagos",
-    question: "¿Qué métodos de pago aceptan?",
+    id: 'pagos',
+    question: '¿Qué métodos de pago aceptan?',
     answer:
-      "Aceptamos pagos con tarjeta de credito, PayPal y otros metodos de pago locales en Peru como Yape, Plin o Transferencia. Puedes elegir tu metodo preferido durante el proceso de suscripcion.",
+      'Aceptamos pagos con tarjeta de credito, PayPal y otros metodos de pago locales en Peru como Yape, Plin o Transferencia. Puedes elegir tu metodo preferido durante el proceso de suscripcion.',
   },
   {
-    id: "recarga",
-    question: "¿Puedo recargar creditos adicionales?",
+    id: 'recarga',
+    question: '¿Puedo recargar creditos adicionales?',
     answer:
-      "Por supuesto, para recargar creditos adicionales primero tienes que tener un plan activo.",
+      'Por supuesto, para recargar creditos adicionales primero tienes que tener un plan activo.',
   },
   {
-    id: "cancelar",
-    question: "¿Cómo puedo cancelar mi suscripción?",
+    id: 'cancelar',
+    question: '¿Cómo puedo cancelar mi suscripción?',
     answer:
-      "Puedes cancelar tu suscripcion en cualquier momento desde la configuracion de tu cuenta.",
+      'Puedes cancelar tu suscripcion en cualquier momento desde la configuracion de tu cuenta.',
   },
 ];
 
