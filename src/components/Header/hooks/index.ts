@@ -41,7 +41,9 @@ export function useSectionObserver() {
       });
     }, OBSERVER_OPTIONS);
 
-    sections.forEach((section) => observer.observe(section));
+    sections.forEach(section => {
+      observer.observe(section);
+    });
 
     return () => observer.disconnect();
   }, []);

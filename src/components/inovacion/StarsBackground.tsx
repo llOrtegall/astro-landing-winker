@@ -109,6 +109,7 @@ function StarsBackground({
   return (
     <div
       data-slot="stars-background"
+      role="application"
       className={
         'relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,#262626_0%,#000_100%)]' +
         (className ? ` ${className}` : '')

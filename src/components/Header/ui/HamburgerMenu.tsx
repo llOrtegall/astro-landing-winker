@@ -17,6 +17,7 @@ export function HamburgerMenu({
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       aria-label={ariaLabel}
       aria-expanded={isOpen}

@@ -25,11 +25,9 @@ export function NavLink({
           aria-current={isActive ? 'page' : undefined}
         >
           {item.icon && (
-            <span
-              className="shrink-0"
-              dangerouslySetInnerHTML={{ __html: item.icon }}
-              aria-hidden="true"
-            />
+            <span className="shrink-0" aria-hidden="true">
+              {item.icon}
+            </span>
           )}
           <span>{item.label}</span>
         </a>

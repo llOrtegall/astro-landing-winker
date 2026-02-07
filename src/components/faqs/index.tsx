@@ -64,6 +64,7 @@ const ChevronIcon = memo(function ChevronIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      <title>Expandir sección</title>
       <path d="M6 9l6 6 6-6" />
     </svg>
   );

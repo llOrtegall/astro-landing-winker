@@ -71,16 +71,12 @@ export default function HeaderNav() {
 
   return (
     <>
-      <header className={headerClasses} role="banner">
+      <header className={headerClasses}>
         <section className={sectionClasses}>
           <Logo />
 
           {/* Desktop Navigation */}
-          <nav
-            role="navigation"
-            aria-label="Navegación principal"
-            className="hidden md:block"
-          >
+          <nav aria-label="Navegación principal" className="hidden md:block">
             <ul className="flex items-center gap-4">
               {NAV_ITEMS.map((item) => (
                 <NavLink
@@ -107,10 +103,11 @@ export default function HeaderNav() {
 
       {/* Mobile Overlay */}
       {isMobileMenuOpen && (
-        <div
+        <button
+          aria-label="Cerrar menú móvil"
+          type="button"
           className={MOBILE_OVERLAY_CLASSES}
           onClick={() => setIsMobileMenuOpen(false)}
-          role="presentation"
         />
       )}
 
@@ -118,7 +115,6 @@ export default function HeaderNav() {
       {isMobileMenuOpen && (
         <nav
           id="mobile-nav"
-          role="navigation"
           aria-label="Navegación móvil"
           className={MOBILE_MENU_CLASSES}
         >

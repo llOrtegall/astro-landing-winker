@@ -1,8 +1,3 @@
-/**
- * Inicializador del demo de Vocal Remover
- * Orquesta toda la lógica de reproducción y gestión de stems
- */
-
 import { AudioPlayer } from './AudioPlayer';
 import { StemManager } from './StemManager';
 import { STEM_IDS } from './constants';

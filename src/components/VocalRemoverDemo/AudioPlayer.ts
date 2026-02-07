@@ -107,7 +107,9 @@ export class AudioPlayer {
     if (!this.isPlaying) return;
 
     this.isPlaying = false;
-    this.audioElements.forEach((audio) => audio.pause());
+    this.audioElements.forEach((audio) => {
+      audio.pause();
+    });
     this.stopProgressAnimation();
     this.notifyStateChange();
   }

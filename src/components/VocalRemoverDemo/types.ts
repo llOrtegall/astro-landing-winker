@@ -1,7 +1,3 @@
-/**
- * Tipos compartidos para el demo del Vocal Remover
- */
-
 export interface Stem {
   id: string;
   name: string;
