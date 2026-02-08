@@ -7,17 +7,33 @@ import VocalRemover from '../../assets/logos/Vocal_Remover.svg';
 import WShare from '../../assets/logos/wShare.svg';
 
 const logos = [
-  { Component: WShare, label: 'wShare' },
-  { Component: VipRemixer, label: 'Vip Remixer' },
-  { Component: Resourzly, label: 'Resourzly' },
-  { Component: FlacDownloader, label: 'Flac Downloader' },
-  { Component: Mp3Downloader, label: 'Mp3 Downloader' },
-  { Component: VocalRemover, label: 'Vocal Remover' },
+  { Component: WShare, label: 'wShare', link: 'https://wshare.cc' },
+  {
+    Component: VipRemixer,
+    label: 'Vip Remixer',
+    link: 'https://vipremixer.winkermind.com',
+  },
+  { Component: Resourzly, label: 'Resourzly', link: 'https://resourzly.com' },
+  {
+    Component: FlacDownloader,
+    label: 'Flac Downloader',
+    link: 'https://flacdownloader.com',
+  },
+  {
+    Component: Mp3Downloader,
+    label: 'Mp3 Downloader',
+    link: 'https://mp3downloader.cc',
+  },
+  {
+    Component: VocalRemover,
+    label: 'Vocal Remover',
+    link: 'https://vocalremover.winkermind.com',
+  },
 ];
 ---
 
 <section class="flex flex-col items-center justify-center gap-4 py-8 w-full overflow-hidden">
-  <h2 class="text-lg font-normal text-pri">Vista rapida nuestros proyectos</h2>
+  <h2 class="text-lg font-normal text-sec tracking-tight">Vista rapida nuestros proyectos</h2>
 
   <div class="relative w-full">
     <div
@@ -29,48 +45,30 @@ const logos = [
     >
     </div>
 
-    <div class="flex animate-scroll">
-      <div class="flex gap-12 min-w-max px-3">
-        {logos.map(({ Component, label }) => (
-          <figure
-            class="px-6 py-4 rounded-xl transition-all duration-300 flex items-center justify-center logo-tile"
-          >
-            <Component class="h-10 w-auto" aria-hidden="true" />
-            <span class="sr-only">{label}</span>
-          </figure>
-        ))}
-      </div>
-
-      <div class="flex gap-12 min-w-max px-3">
-        {logos.map(({ Component, label }) => (
-          <figure
-            class="px-6 py-4 rounded-xl transition-all duration-300 flex items-center justify-center logo-tile"
-          >
-            <Component class="h-10 w-auto" aria-hidden="true" />
-            <span class="sr-only">{label}</span>
-          </figure>
-        ))}
-      </div>
+    <div class="flex gap-12 animate-scroll">
+      {[...logos, ...logos].map(({ Component, label, link }) => (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-4 rounded-xl transition-all duration-300 flex items-center justify-center logo-tile shrink-0"
+        >
+          <Component class="h-8 w-auto" aria-hidden="true" />
+          <span class="sr-only">{label}</span>
+        </a>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
   .animate-scroll {
-    animation: scroll 20s linear infinite;
+    animation: scroll 40s linear infinite;
   }
 
   .animate-scroll:hover {
     animation-play-state: paused;
+    cursor: pointer;
   }
 
   .logo-tile {
@@ -89,5 +87,46 @@ const logos = [
   .logo-tile:hover :global(svg) {
     filter: none;
     transform: translateY(-1px);
+  }
+</style>
+
+<script>
+  function initCarousel() {
+    const carousel = document.querySelector('.animate-scroll') as HTMLElement;
+    if (!carousel) return;
+
+    const items = carousel.children;
+    const totalItems = items.length;
+    const halfItems = totalItems / 2;
+    
+    // Calcular ancho exacto de la primera mitad incluyendo gaps
+    const computedStyle = getComputedStyle(carousel);
+    const gap = parseFloat(computedStyle.gap) || 0;
+    
+    let halfWidth = 0;
+    for (let i = 0; i < halfItems; i++) {
+      halfWidth += (items[i] as HTMLElement).offsetWidth;
+    }
+    halfWidth += gap * halfItems; // gaps entre elementos + gap final
+    
+    carousel.style.setProperty('--scroll-width', `-${halfWidth}px`);
+  }
+
+  // Ejecutar después de que el DOM esté listo y las fuentes cargadas
+  if (document.readyState === 'complete') {
+    initCarousel();
+  } else {
+    window.addEventListener('load', initCarousel);
+  }
+</script>
+
+<style is:global>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(var(--scroll-width, -50%));
+    }
   }
 </style>

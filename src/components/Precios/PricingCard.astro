@@ -6,7 +6,7 @@ interface Props {
   billingInfo?: string;
   features: string[];
   plan: string;
-  featured?: boolean;
+  className?: string;
 }
 
 const {
@@ -16,12 +16,12 @@ const {
   billingInfo = 'Se factura cada mes.',
   features,
   plan,
-  featured = false,
+  className,
 } = Astro.props;
 ---
 
 <article
-  class="bg-[#2C2C32] rounded-2xl p-8 flex flex-col h-full"
+  class={`bg-[#2C2C32] rounded-2xl p-8 flex flex-col h-full ${className ?? ''}`}
   data-plan={plan}
 >
   <div class="mb-6 tracking-tighter">

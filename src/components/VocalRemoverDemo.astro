@@ -39,7 +39,7 @@ const spectrumMap: Record<string, any> = {
     {
       STEMS_CONFIG.map((stem) => (
         <audio id={`audio-${stem.id}`} preload="auto">
-          <source src={stem.file} type="audio/wav" />
+          <source src={stem.file} type="audio/mpeg" />
         </audio>
       ))
     }
@@ -58,8 +58,9 @@ const spectrumMap: Record<string, any> = {
         <div class="flex items-center gap-4">
           <p class="font-normal tracking-tighter">Ir a Vocal Remover</p>
           <a
-            href="https://vocalremover.org/"
+            href="https://vocalremover.winkermind.com"
             target="_blank"
+            rel="noopener noreferrer"
             class="flex items-center justify-center text-emerald-500 hover:underline gap-1 border
           border-emerald-500/30 size-10 rounded-full hover:bg-emerald-500/10 transition-all duration-300 hover:shadow-lg"
           >
