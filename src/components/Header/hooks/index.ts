@@ -41,7 +41,7 @@ export function useSectionObserver() {
       });
     }, OBSERVER_OPTIONS);
 
-    sections.forEach(section => {
+    sections.forEach((section) => {
       observer.observe(section);
     });
 
