@@ -45,7 +45,7 @@ function StarLayer({
       animate={{ y: [0, -2000] }}
       transition={transition}
       className={
-        'absolute top-0 left-0 w-full h-125' +
+        'absolute top-0 left-0 w-full h-[125%]' +
         (className ? ` ${className}` : '')
       }
       {...props}
@@ -59,7 +59,7 @@ function StarLayer({
         }}
       />
       <div
-        className="absolute bg-transparent rounded-full top-125"
+        className="absolute bg-transparent rounded-full top-[125%]"
         style={{
           width: `${size}px`,
           height: `${size}px`,
@@ -111,7 +111,7 @@ function StarsBackground({
       data-slot="stars-background"
       role="application"
       className={
-        'relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,#262626_0%,#000_100%)]' +
+        'relative size-full overflow-hidden' +
         (className ? ` ${className}` : '')
       }
       onMouseMove={handleMouseMove}

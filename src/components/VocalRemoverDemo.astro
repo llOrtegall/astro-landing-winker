@@ -24,13 +24,13 @@ const spectrumMap: Record<string, any> = {
 };
 ---
 
-<section class="mt-18">
-  <h2 class="text-3xl font-normal text-white pb-8 tracking-tighter">
+<section class="mt-12 sm:mt-16 lg:mt-20">
+  <h2 class="text-2xl sm:text-3xl font-normal text-white pb-6 sm:pb-8 tracking-tighter">
     Apps de Inteligencia Artificial
   </h2>
 
   <section
-    class="bg-black/15 border border-slate-700/30 rounded-2xl px-10 py-16"
+    class="bg-black/15 border border-slate-700/30 rounded-2xl px-5 sm:px-8 lg:px-10 py-8 sm:py-12 lg:py-16"
   >
     <!-- Header -->
     <Header />
@@ -45,38 +45,40 @@ const spectrumMap: Record<string, any> = {
     }
 
     <!-- Music Player -->
-    <div class="flex flex-col gap-4 mb-6">
-      <div class="flex gap-6 justify-between">
-        <div class="flex-1">
-          <p class="text-base font-semibold text-white mb-3">
+    <div class="flex flex-col gap-4 mb-6 sm:mb-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div class="flex-1 min-w-0">
+          <p class="text-base sm:text-lg font-semibold text-white mb-3">
             Billie Eilish - Bad Guy
           </p>
           <ProgressBar />
         </div>
-        <ControlButtons />
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 md:gap-8">
+          <ControlButtons />
 
-        <div class="flex items-center gap-4">
-          <p class="font-normal tracking-tighter">Ir a Vocal Remover</p>
-          <a
-            href="https://vocalremover.winkermind.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-center text-emerald-500 hover:underline gap-1 border
+          <div class="flex items-center gap-3">
+            <p class="font-normal tracking-tighter">Ir a Vocal Remover</p>
+            <a
+              href="https://vocalremover.winkermind.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center text-emerald-500 hover:underline gap-1 border
           border-emerald-500/30 size-10 rounded-full hover:bg-emerald-500/10 transition-all duration-300 hover:shadow-lg"
-          >
-            <svg
-              class="w-5 h-5 text-emerald-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.5"
-                d="M9 5l7 7-7 7"></path>
-            </svg>
-          </a>
+              <svg
+                class="w-5 h-5 text-emerald-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>

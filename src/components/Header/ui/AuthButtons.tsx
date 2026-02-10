@@ -41,7 +41,7 @@ export function AuthButtons({
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Iniciar sesión"
-        className="hover:underline cursor-pointer"
+        className="cursor-pointer hover:text-gray-200 transition-colors duration-300"
       >
         Login
       </a>
@@ -49,7 +49,7 @@ export function AuthButtons({
         href="https://auth.winkermind.com/register"
         target="_blank"
         rel="noopener noreferrer"
-        className="cursor-pointer px-3 py-2 font-normal text-pri bg-quaternary rounded-full hover:brightness-110 transition-all duration-200"
+        className="cursor-pointer px-5 py-2 font-normal text-pri bg-quaternary rounded-full hover:brightness-110 transition-all duration-200"
         aria-label="Registrarse"
       >
         Registrate

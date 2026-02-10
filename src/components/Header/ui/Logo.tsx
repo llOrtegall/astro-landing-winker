@@ -7,7 +7,7 @@ export function Logo() {
           alt="Logo Winker"
           className="size-8 object-contain"
         />
-        <p className="font-semibold text-xl">Winkermind</p>
+        <p className="font-semibold text-xl hidden xl:block">Winkermind</p>
       </figure>
     </a>
   );

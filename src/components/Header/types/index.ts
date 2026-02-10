@@ -47,9 +47,9 @@ export const OBSERVER_OPTIONS = {
 export const HEADER_BASE_CLASSES =
   'mx-auto sticky rounded-xl z-50 transition-all duration-500 ease-in-out bg-background/95 backdrop-blur-md';
 export const HEADER_SCROLLED_CLASSES =
-  'md:w-6xl md:top-6 md:border md:border-pri/5 md:bg-background/95 backdrop-blur px-4 md:px-12 top-0 md:rounded-xl';
+  'md:w-2xl lg:w-3xl 2xl:w-5xl md:top-6 md:border md:border-pri/5 md:bg-background/95 backdrop-blur px-4 md:px-12 top-0 md:rounded-xl';
 export const HEADER_INITIAL_CLASSES =
-  'md:w-7xl md:top-2 md:border-transparent md:bg-transparent px-4 md:px-12';
+  'md:w-3xl lg:w-4xl 2xl:w-6xl md:top-2 md:border-transparent md:bg-transparent px-4 md:px-12';
 export const SECTION_BASE_CLASSES =
   'flex items-center justify-between transition-all duration-500 ease-in-out';
 export const NAV_ACTIVE_CLASSES =
