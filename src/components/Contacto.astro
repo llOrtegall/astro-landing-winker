@@ -1,9 +1,17 @@
 ---
 import WhatAppIcon from '../assets/logos/wp.svg';
+import { StarsBackground } from './inovacion/StarsBackground';
 ---
 
-<section class='py-10 sm:py-12 lg:py-14 bg-tertiary border border-border-pri rounded-2xl'>
-  <div class="text-center">
+<section class='relative py-10 sm:py-12 lg:py-14 rounded-2xl overflow-hidden'>
+  <div class="absolute inset-0 z-0">
+    <StarsBackground
+      client:visible
+      pointerEvents={false}
+    />
+  </div>
+
+  <div class="relative z-10 text-center">
     <h2 class="text-2xl sm:text-3xl font-medium tracking-tighter text-pri mb-3 sm:mb-4">
       Contáctanos
     </h2>
@@ -12,7 +20,7 @@ import WhatAppIcon from '../assets/logos/wp.svg';
     </p>
   </div>
 
-  <div class="p-6 sm:p-8 max-w-6xl mx-auto">
+  <div class="relative z-10 p-6 sm:p-8 max-w-6xl mx-auto">
     <div class="grid gap-8 sm:gap-10 md:grid-cols-3">
       <!-- Email -->
       <div class="flex items-center gap-4">
@@ -54,6 +62,7 @@ import WhatAppIcon from '../assets/logos/wp.svg';
         <div>
           <h4 class="text-pri font-semibold mb-1">WhatsApp</h4>
           <a
+            target="_blank"
             href="https://wa.me/+51946970327"
             class="text-sec hover:text-quaternary transition-colors"
           >
