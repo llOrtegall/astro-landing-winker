@@ -1,10 +1,15 @@
 ---
-import VocalRemoveBlack from '../../assets/logos/vocalRemo.svg';
+import { Image } from 'astro:assets';
+import RemoverPng from '../../assets/logos/vocalRemo.png';
 ---
+
 <header class="">
   <section class="flex items-center gap-4 justify-center">
-    <figure>
-      <VocalRemoveBlack class="size-12 text-green-700" />
+    <figure class="size-12">
+      <Image
+        src={RemoverPng}
+        alt="Vocal Remover Logo"
+        class="w-12 h-12 object-contain" />
     </figure>
     <article>
       <h2 class="text-4xl font-normal text-white tracking-tighter">
