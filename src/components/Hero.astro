@@ -3,24 +3,24 @@ import Avatares from './ui/Avatares.astro';
 import ProjectsCarousel from './ui/ProjectsCarousel.astro';
 ---
 
-<section class="relative h-full flex flex-col items-center justify-center pt-20">
+<section class="relative h-full flex flex-col items-center justify-center pt-16 sm:pt-20 lg:pt-24">
   <div
-    class="absolute inset-0 -z-10 2xl:h-153 lg:h-147 w-full
+    class="absolute inset-0 -z-10 w-full lg:h-151 2xl:h-158
       [background:radial-gradient(120%_100%_at_50%_10%,var(--color-primary)_42%,var(--color-secondary)_100%)] rounded-b-3xl"
   >
   </div>
 
-  <div class="relative z-10 w-full max-w-5xl text-center">
+  <div class="relative z-10 w-full max-w-5xl text-center px-4 sm:px-6">
     <!-- Badge -->
     <div
-      class="inline-flex items-center bg-sixth px-3 py-1 rounded-full mb-4 lg:mb-8 2xl:mb-12 text-white font-normal"
+      class="inline-flex items-center bg-sixth px-3 py-1 rounded-full mb-4 sm:mb-6 lg:mb-8 2xl:mb-12 text-white font-normal"
     >
       <span class="text-sm text-gray-200">⚡Bienvenido</span>
     </div>
 
     <!-- Título -->
     <h1
-      class="text-4xl text-balance lg:text-5xl xl:text-6xl font-medium tracking-tighter text-white leading-tight mb-1 lg:mb-4 2xl:mb-6"
+      class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-balance font-medium tracking-tighter text-white leading-tight mb-2 sm:mb-3 lg:mb-4 2xl:mb-6"
     >
       Creamos las herramientas,
       <br />
@@ -30,7 +30,7 @@ import ProjectsCarousel from './ui/ProjectsCarousel.astro';
 
   <!-- Descripción -->
   <p
-    class="text-seventh text-sm text-pretty md:text-xl mb-10 max-w-3xl mx-auto"
+    class="text-seventh text-base sm:text-lg md:text-xl text-pretty mb-8 sm:mb-10 max-w-3xl mx-auto px-6"
   >
     Desarrollamos y mantenemos un ecosistema de aplicaciones web enfocadas en la
     música, el diseño y la productividad para miles de usuarios globales.
@@ -38,7 +38,7 @@ import ProjectsCarousel from './ui/ProjectsCarousel.astro';
 
   <!-- Botones -->
   <div
-    class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+    class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12"
   >
     <a
     href="#proyectos"

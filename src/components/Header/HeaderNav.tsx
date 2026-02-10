@@ -77,7 +77,7 @@ export default function HeaderNav() {
 
           {/* Desktop Navigation */}
           <nav aria-label="Navegación principal" className="hidden md:block">
-            <ul className="flex items-center gap-4">
+            <ul className="flex items-center gap-6 lg:gap-8 text-sm lg:text-base">
               {NAV_ITEMS.map((item) => (
                 <NavLink
                   key={item.href}
