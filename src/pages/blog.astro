@@ -25,11 +25,11 @@ const gradients = [
 <BlogLayout title="Blog | Winkermind">
   <!-- Header -->
   <header class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-linear-to-b from-quaternary/8 to-transparent"></div>
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-10 sm:pb-14 text-center">
+    <div class="absolute inset-0 bg-linear-to-b from-quaternary/6 via-quaternary/3 to-transparent"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-8 sm:pb-12">
       <a
         href="/"
-        class="inline-flex items-center gap-2 text-sec hover:text-pri transition-colors text-sm font-medium mb-8"
+        class="inline-flex items-center gap-2 text-sec hover:text-quaternary transition-colors text-sm font-medium mb-10 sm:mb-12"
       >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -37,29 +37,37 @@ const gradients = [
         Volver al inicio
       </a>
 
-      <h1 class="text-4xl sm:text-5xl font-medium tracking-tighter text-pri mb-4">
-        Blog & Recursos
-      </h1>
-      <p class="text-sec text-lg tracking-tighter max-w-xl mx-auto">
-        Tips, tutoriales y novedades sobre producción musical e IA
-      </p>
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 bg-quaternary/10 border border-quaternary/20 px-3 py-1.5 rounded-full mb-5">
+          <span class="w-1.5 h-1.5 rounded-full bg-quaternary animate-pulse"></span>
+          <span class="text-quaternary text-xs font-medium tracking-wide uppercase">{posts.length} artículos publicados</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tighter text-pri mb-4 leading-[1.1]">
+          Blog & Recursos
+        </h1>
+        <p class="text-sec text-base sm:text-lg leading-relaxed">
+          Tips, tutoriales y novedades sobre producción musical e IA
+        </p>
+      </div>
     </div>
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="h-px bg-linear-to-r from-transparent via-border-pri to-transparent"></div>
+      <div class="h-px bg-linear-to-r from-border-pri via-border-pri/50 to-transparent"></div>
     </div>
   </header>
 
   <!-- Posts grid -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {posts.map((post, i) => (
-        <a href={`/blogs/${post.id}`} class="block group">
-          <article class="bg-tertiary border border-border-pri rounded-xl overflow-hidden hover:border-quaternary/50 transition-all h-full flex flex-col">
-            <div class={`relative h-44 bg-linear-to-br ${gradients[i % gradients.length]} overflow-hidden`}>
+    <!-- Featured post (latest) -->
+    {posts.length > 0 && (
+      <a href={`/blogs/${posts[0].id}`} class="block group mb-10 sm:mb-14">
+        <article class="relative bg-tertiary border border-border-pri rounded-2xl overflow-hidden hover:border-quaternary/50 transition-all duration-300">
+          <div class="grid md:grid-cols-2">
+            <div class={`relative h-56 md:h-full min-h-[260px] bg-linear-to-br ${gradients[0]} overflow-hidden`}>
               <div class="absolute inset-0 flex items-center justify-center">
                 <svg
-                  class="w-14 h-14 text-pri/20"
+                  class="w-20 h-20 text-pri/15"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -67,32 +75,35 @@ const gradients = [
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
-                    d={iconPaths[post.data.icon] ?? iconPaths.bolt}
+                    stroke-width="1.5"
+                    d={iconPaths[posts[0].data.icon] ?? iconPaths.bolt}
                   />
                 </svg>
               </div>
               <span
                 class:list={[
-                  'absolute top-3 left-3 text-pri text-xs font-semibold px-3 py-1 rounded-full',
-                  post.data.categoryColor === 'secondary' ? 'bg-secondary' : 'bg-quaternary',
+                  'absolute top-4 left-4 text-pri text-xs font-semibold px-3 py-1.5 rounded-full',
+                  posts[0].data.categoryColor === 'secondary' ? 'bg-secondary' : 'bg-quaternary',
                 ]}
               >
-                {post.data.category}
+                {posts[0].data.category}
               </span>
+              <div class="absolute top-4 right-4 bg-black/30 backdrop-blur-sm text-pri/80 text-xs px-3 py-1.5 rounded-full">
+                Más reciente
+              </div>
             </div>
 
-            <div class="p-5 flex flex-col flex-1">
-              <div class="flex items-center gap-2 text-sec text-xs mb-3">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <div class="p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+              <div class="flex items-center gap-2 text-sec text-xs mb-4">
+                <svg class="w-3.5 h-3.5 text-quaternary" fill="currentColor" viewBox="0 0 20 20">
                   <path
                     fill-rule="evenodd"
                     d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                     clip-rule="evenodd"
                   />
                 </svg>
-                <time datetime={post.data.date.toISOString()}>
-                  {post.data.date.toLocaleDateString('es-ES', {
+                <time datetime={posts[0].data.date.toISOString()}>
+                  {posts[0].data.date.toLocaleDateString('es-ES', {
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric',
@@ -100,40 +111,124 @@ const gradients = [
                 </time>
               </div>
 
-              <h2 class="text-lg font-bold text-pri mb-2 group-hover:text-quaternary transition-colors leading-snug">
-                {post.data.title}
+              <h2 class="text-2xl sm:text-3xl font-bold text-pri mb-3 group-hover:text-quaternary transition-colors tracking-tight leading-snug">
+                {posts[0].data.title}
               </h2>
 
-              <p class="text-sec text-sm leading-relaxed mb-4 flex-1">
-                {post.data.description}
+              <p class="text-sec text-sm sm:text-base leading-relaxed mb-6">
+                {posts[0].data.description}
               </p>
 
               <div class="flex items-center text-quaternary text-sm font-semibold">
                 Leer artículo
-                <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>
             </div>
-          </article>
-        </a>
-      ))}
-    </div>
+          </div>
+        </article>
+      </a>
+    )}
+
+    <!-- Rest of posts -->
+    {posts.length > 1 && (
+      <div>
+        <div class="flex items-center gap-3 mb-6 sm:mb-8">
+          <h3 class="text-sm font-medium text-sec uppercase tracking-wider">Todos los artículos</h3>
+          <div class="flex-1 h-px bg-border-pri"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {posts.slice(1).map((post, i) => (
+            <a href={`/blogs/${post.id}`} class="block group">
+              <article class="bg-tertiary border border-border-pri rounded-xl overflow-hidden hover:border-quaternary/50 hover:shadow-lg hover:shadow-quaternary/5 transition-all duration-300 h-full flex flex-col">
+                <div class={`relative h-40 bg-linear-to-br ${gradients[(i + 1) % gradients.length]} overflow-hidden`}>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <svg
+                      class="w-12 h-12 text-pri/15"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d={iconPaths[post.data.icon] ?? iconPaths.bolt}
+                      />
+                    </svg>
+                  </div>
+                  <span
+                    class:list={[
+                      'absolute top-3 left-3 text-pri text-xs font-semibold px-2.5 py-1 rounded-full',
+                      post.data.categoryColor === 'secondary' ? 'bg-secondary' : 'bg-quaternary',
+                    ]}
+                  >
+                    {post.data.category}
+                  </span>
+                </div>
+
+                <div class="p-5 flex flex-col flex-1">
+                  <div class="flex items-center gap-2 text-sec text-xs mb-3">
+                    <svg class="w-3.5 h-3.5 text-quaternary/70" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fill-rule="evenodd"
+                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <time datetime={post.data.date.toISOString()}>
+                      {post.data.date.toLocaleDateString('es-ES', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })}
+                    </time>
+                  </div>
+
+                  <h2 class="text-base font-bold text-pri mb-2 group-hover:text-quaternary transition-colors leading-snug">
+                    {post.data.title}
+                  </h2>
+
+                  <p class="text-sec text-sm leading-relaxed mb-4 flex-1 line-clamp-2">
+                    {post.data.description}
+                  </p>
+
+                  <div class="flex items-center text-quaternary text-xs font-semibold">
+                    Leer más
+                    <svg class="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
 
     {posts.length === 0 && (
       <div class="text-center py-20">
-        <p class="text-sec text-lg">No hay artículos publicados todavía.</p>
+        <div class="w-16 h-16 mx-auto mb-4 bg-tertiary rounded-full flex items-center justify-center">
+          <svg class="w-8 h-8 text-sec" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+        </div>
+        <p class="text-sec text-lg mb-1">No hay artículos publicados todavía</p>
+        <p class="text-sec/60 text-sm">Vuelve pronto para nuevos contenidos</p>
       </div>
     )}
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-border-pri">
+  <footer class="border-t border-border-pri mt-auto">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
         <a
           href="/"
-          class="inline-flex items-center gap-2 text-sec hover:text-pri transition-colors text-sm font-medium"
+          class="inline-flex items-center gap-2 text-sec hover:text-quaternary transition-colors text-sm font-medium"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
