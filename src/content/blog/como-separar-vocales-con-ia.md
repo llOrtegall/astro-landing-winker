@@ -5,7 +5,7 @@ date: 2026-01-15
 category: "Tutorial"
 categoryColor: "quaternary"
 icon: "microphone"
-image: "/src/assets/blog/vocal.png"
+image: "/blog/vocal.png"
 ---
 
 ## Introducción
