@@ -1,6 +1,5 @@
 import { useCallback, type ReactElement } from 'react';
 import {
-  NAV_ACTIVE_CLASSES,
   MOBILE_NAV_ITEM_CLASSES,
   type NavIconKey,
   type NavLinkProps,
@@ -105,7 +104,7 @@ export function NavLink({
 
   return (
     <li
-      className={`transition-all hidden md:block ${isActive ? NAV_ACTIVE_CLASSES : ''}`}
+      className={`transition-all hidden md:block px-3 py-1.5 ${isActive ? 'bg-[#202024] rounded-full' : ''}`}
     >
       <a
         href={item.href}

@@ -1,6 +1,6 @@
 export function Logo() {
   return (
-    <a href="/" aria-label="Ir al inicio">
+    <a href="#hero" aria-label="Ir al inicio">
       <figure className="flex items-center gap-2">
         <img
           src="/logo.png"
