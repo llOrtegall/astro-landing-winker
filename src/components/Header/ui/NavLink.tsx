@@ -1,6 +1,5 @@
 import { useCallback, type ReactElement } from 'react';
 import {
-  NAV_ACTIVE_CLASSES,
   MOBILE_NAV_ITEM_CLASSES,
   type NavIconKey,
   type NavLinkProps,
@@ -80,6 +79,7 @@ export function NavLink({
   isActive,
   onClick,
   isMobile = false,
+  registerNode,
 }: NavLinkProps) {
   const handleClick = useCallback(() => {
     onClick(item.href);
@@ -87,11 +87,13 @@ export function NavLink({
 
   if (isMobile) {
     return (
-      <li className={`${MOBILE_NAV_ITEM_CLASSES} list-none`}>
+      <li
+        className={`${MOBILE_NAV_ITEM_CLASSES} list-none transition-all duration-300 ease-out`}
+      >
         <a
           href={item.href}
           onClick={handleClick}
-          className={`flex items-center gap-3 transition-colors ${isActive ? 'text-pri font-semibold' : 'text-sec'}`}
+          className={`flex items-center gap-3 transition-all duration-300 ease-out ${isActive ? 'text-pri font-semibold' : 'text-sec'}`}
           aria-current={isActive ? 'page' : undefined}
         >
           {item.icon && (
@@ -105,12 +107,13 @@ export function NavLink({
 
   return (
     <li
-      className={`transition-all hidden md:block ${isActive ? NAV_ACTIVE_CLASSES : ''}`}
+      ref={(node) => registerNode?.(item.href, node)}
+      className="relative z-10 hidden md:block rounded-full px-3 py-1.5 transition-all duration-300 ease-out"
     >
       <a
         href={item.href}
         onClick={handleClick}
-        className={`transition-colors ${isActive ? 'text-pri' : 'text-sec'}`}
+        className={`inline-flex items-center justify-center font-medium transition-all duration-300 ease-out ${isActive ? 'text-pri' : 'text-sec hover:text-pri'}`}
         aria-current={isActive ? 'page' : undefined}
       >
         {item.label}

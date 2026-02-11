@@ -47,17 +47,41 @@ const formattedDate = post.data.date.toLocaleDateString('es-ES', {
 
   <!-- Hero header -->
   <header class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-linear-to-b from-quaternary/8 to-transparent"></div>
+    {post.data.image ? (
+      <!-- Header con imagen -->
+      <div class="relative h-72 sm:h-96 overflow-hidden">
+        <img
+          src={post.data.image}
+          alt={post.data.title}
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-linear-to-t from-primary via-primary/60 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 max-w-4xl mx-auto px-4 sm:px-6 pb-10 sm:pb-12">
+          <span
+            class:list={[
+              'inline-block text-pri text-xs font-semibold px-3 py-1.5 rounded-full mb-6',
+              post.data.categoryColor === 'secondary' ? 'bg-secondary' : 'bg-quaternary',
+            ]}
+          >
+            {post.data.category}
+          </span>
+        </div>
+      </div>
+    ) : (
+      <div class="absolute inset-0 bg-linear-to-b from-quaternary/8 to-transparent"></div>
+    )}
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-10 sm:pb-12">
-      <!-- Category badge -->
-      <span
-        class:list={[
-          'inline-block text-pri text-xs font-semibold px-3 py-1.5 rounded-full mb-6',
-          post.data.categoryColor === 'secondary' ? 'bg-secondary' : 'bg-quaternary',
-        ]}
-      >
-        {post.data.category}
-      </span>
+      {!post.data.image && (
+        <!-- Category badge (solo si no hay imagen) -->
+        <span
+          class:list={[
+            'inline-block text-pri text-xs font-semibold px-3 py-1.5 rounded-full mb-6',
+            post.data.categoryColor === 'secondary' ? 'bg-secondary' : 'bg-quaternary',
+          ]}
+        >
+          {post.data.category}
+        </span>
+      )}
 
       <!-- Title -->
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tighter text-pri mb-5 leading-[1.15] max-w-3xl">
@@ -82,10 +106,18 @@ const formattedDate = post.data.date.toLocaleDateString('es-ES', {
         </div>
         <span class="w-1 h-1 rounded-full bg-border-pri"></span>
         <div class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-quaternary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d={iconPaths[post.data.icon] ?? iconPaths.bolt}></path>
-          </svg>
+          {post.data.image ? (
+            <img
+              src={post.data.image}
+              alt={post.data.category}
+              class="w-4 h-4 rounded object-cover"
+            />
+          ) : (
+            <svg class="w-4 h-4 text-quaternary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d={iconPaths[post.data.icon] ?? iconPaths.bolt}></path>
+            </svg>
+          )}
           <span>Winkermind</span>
         </div>
       </div>

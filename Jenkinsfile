@@ -15,6 +15,26 @@ pipeline {
             }
         }
 
+        stage('Stop Services') {
+            steps {
+                sh '''
+                   echo "🛑 Stopping Docker services..."
+                   docker compose -f config/docker-compose.yaml down -v --remove-orphans
+                   echo "✓ Services stopped"
+                '''
+            }
+        }
+
+        stage('Clean Dist') {
+            steps {
+                sh '''
+                   echo "🧹 Cleaning dist directory..."
+                   rm -rf dist
+                   echo "✓ Dist directory cleaned"
+                '''
+            }
+        }
+
         stage('Install deps') {
             steps {
                 sh '''
@@ -37,26 +57,12 @@ pipeline {
         }
 
         stage('Deploy') {
-            parallel {
-                stage('Stop Services') {
-                    steps {
-                        sh '''
-                           echo "🛑 Stopping Docker services..."
-                           docker compose -f config/docker-compose.yaml down -v --remove-orphans
-                           echo "✓ Services stopped"
-                        '''
-                    }
-                }
-                
-                stage('Start Services') {
-                    steps {
-                        sh '''
-                           echo "🚀 Starting Docker services..."
-                           docker compose -f config/docker-compose.yaml up -d --remove-orphans
-                           echo "✓ Services started"
-                        '''
-                    }
-                }
+            steps {
+                sh '''
+                   echo "🚀 Starting Docker services..."
+                   docker compose -f config/docker-compose.yaml up -d --remove-orphans
+                   echo "✓ Services started"
+                '''
             }
         }
 

@@ -5,6 +5,7 @@ date: 2026-01-28
 category: "Novedad"
 categoryColor: "quaternary"
 icon: "bolt"
+image: "/blog/iamusic.png"
 ---
 
 ## La IA en la música en 2026
