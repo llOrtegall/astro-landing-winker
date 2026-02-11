@@ -11,6 +11,7 @@ export interface NavLinkProps {
   isActive: boolean;
   onClick: (href: string) => void;
   isMobile?: boolean;
+  registerNode?: (href: string, node: HTMLLIElement | null) => void;
 }
 
 export const NAV_ITEMS: readonly NavItem[] = [
@@ -23,6 +24,11 @@ export const NAV_ITEMS: readonly NavItem[] = [
     href: '#precios',
     label: 'Precios',
     icon: 'tag',
+  },
+  {
+    href: '#faqs',
+    label: 'FAQs',
+    icon: 'file',
   },
   {
     href: '#blog',
