@@ -37,22 +37,33 @@ const gradients: Record<number, string> = {
         <article
           class="bg-tertiary border border-border-pri rounded-xl overflow-hidden hover:border-quaternary/50 transition-all group cursor-pointer h-full flex flex-col"
         >
-          <div class={`relative h-48 bg-linear-to-br ${gradients[i] ?? gradients[0]} overflow-hidden`}>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <svg
-                class="w-16 h-16 text-pri/20"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d={iconPaths[post.data.icon] ?? iconPaths.bolt}
-                />
-              </svg>
-            </div>
+          <div class="relative h-48 overflow-hidden">
+            {post.data.image ? (
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="w-full h-full object-cover"
+              />
+            ) : (
+              <>
+                <div class={`absolute inset-0 bg-linear-to-br ${gradients[i] ?? gradients[0]}`}></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    class="w-16 h-16 text-pri/20"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d={iconPaths[post.data.icon] ?? iconPaths.bolt}
+                    />
+                  </svg>
+                </div>
+              </>
+            )}
             <span
               class:list={[
                 'absolute top-4 left-4 text-pri text-xs font-semibold px-3 py-1 rounded-full',

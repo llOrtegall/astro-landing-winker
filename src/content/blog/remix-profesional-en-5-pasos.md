@@ -5,6 +5,7 @@ date: 2026-01-10
 category: "Guía"
 categoryColor: "secondary"
 icon: "music"
+image: "/src/assets/blog/remix.png"
 ---
 
 ## Introducción

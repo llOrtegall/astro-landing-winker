@@ -10,6 +10,7 @@ const blog = defineCollection({
         category: z.string(),
         categoryColor: z.enum(['quaternary', 'secondary']).default('quaternary'),
         icon: z.enum(['microphone', 'music', 'bolt']).default('bolt'),
+        image: z.string().optional(),
     }),
 });
 
