@@ -10,14 +10,14 @@ export function AuthButtons({
   if (isMobile) {
     return (
       <div
-        className={`flex flex-col gap-2 px-4 py-4 border-t border-border-pri/20 ${className}`}
+        className={`flex gap-2 px-4 py-4 border-t border-border-pri/20 ${className}`}
       >
         <a
           href="https://auth.winkermind.com/login"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Iniciar sesión"
-          className="w-full px-3 py-2 text-pri hover:text-pri transition-colors text-sm border rounded-full border-gray-600"
+          className="w-full px-3 py-2 text-center text-pri hover:text-pri transition-colors text-sm border rounded-full border-gray-600"
         >
           Login
         </a>
@@ -25,7 +25,7 @@ export function AuthButtons({
           href="https://auth.winkermind.com/register"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full px-3 py-2 font-normal text-pri bg-quaternary rounded-full hover:brightness-110 transition-all duration-200 text-sm"
+          className="w-full px-3 py-2 text-center font-normal text-pri bg-quaternary rounded-full hover:brightness-110 transition-all duration-200 text-sm"
           aria-label="Registrarse"
         >
           Registrate
