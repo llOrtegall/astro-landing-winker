@@ -8,11 +8,10 @@ import Precios from '../components/Precios.astro';
 import Blog from '../components/Blog.astro';
 import Contacto from '../components/Contacto.astro';
 import Faqs from '../components/faqs/Faqs.astro';
-import { StarsBackground } from '../components/inovacion/StarsBackground.tsx';
 ---
 
 <Layout title="Landing Page Winkermind">
-	<SectionContainer id="hero">
+	<SectionContainer id="hero" className='2xl:pt-24 lg:pt-14 pb-10'>
 		<Hero />
 	</SectionContainer>
 	<SectionContainer id="proyectos">
@@ -25,11 +24,11 @@ import { StarsBackground } from '../components/inovacion/StarsBackground.tsx';
 	</SectionContainer>
 
 	<SectionContainer id="blog">
-		<Blog />
 		<Faqs />
+		<Blog />
 	</SectionContainer>
 
-	<SectionContainer id="contacto">
+	<SectionContainer id="contacto" className='pt-10 pb-36'>
 		<Contacto />
 	</SectionContainer>
 </Layout>

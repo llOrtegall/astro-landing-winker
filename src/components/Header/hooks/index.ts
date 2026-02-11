@@ -29,7 +29,7 @@ export function useSectionObserver() {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const sections = document.querySelectorAll('main[id]');
+    const sections = document.querySelectorAll('section[id]');
     if (sections.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {
