@@ -5,7 +5,7 @@ date: 2026-02-10
 category: "Inteligencia Artificial"
 categoryColor: "secondary"
 icon: "microphone"
-image: "/blog/ai-audio.png"
+image: "/blog/remix.png"
 ---
 
 ## Introducción

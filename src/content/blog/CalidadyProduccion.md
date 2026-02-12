@@ -5,7 +5,7 @@ date: 2026-02-11
 category: "DJ Profesional"
 categoryColor: "quaternary"
 icon: "microphone"
-image: "/blog/dj-quality.png"
+image: "/blog/iamusic.png"
 ---
 
 ## Introducción

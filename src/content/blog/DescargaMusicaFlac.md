@@ -5,7 +5,7 @@ date: 2026-02-09
 category: "Audio"
 categoryColor: "quaternary"
 icon: "music"
-image: "/blog/flac.png"
+image: "/blog/vocal.png"
 ---
 
 ## Introducción
