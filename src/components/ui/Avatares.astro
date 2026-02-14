@@ -1,15 +1,15 @@
 ---
-import { Image } from 'astro:assets';
-import hero01 from '../../assets/hero/01.jpg';
-import hero02 from '../../assets/hero/02.jpg';
-import hero03 from '../../assets/hero/03.jpg';
-import hero04 from '../../assets/hero/04.jpg';
-import hero05 from '../../assets/hero/05.jpg';
-import hero06 from '../../assets/hero/06.jpg';
-import hero07 from '../../assets/hero/07.jpg';
+import { Image } from "astro:assets";
+import hero01 from "../../assets/hero/01.jpg";
+import hero02 from "../../assets/hero/02.jpg";
+import hero03 from "../../assets/hero/03.jpg";
+import hero04 from "../../assets/hero/04.jpg";
+import hero05 from "../../assets/hero/05.jpg";
+import hero06 from "../../assets/hero/06.jpg";
+import hero07 from "../../assets/hero/07.jpg";
 ---
 
-<div class="flex flex-col items-center gap-4">
+<div class="flex flex-col items-center gap-4 pb-6">
   <div class="flex items-center -space-x-3">
     <Image
       src={hero01}
@@ -54,12 +54,10 @@ import hero07 from '../../assets/hero/07.jpg';
       loading="lazy"
     />
     <div
-    class="w-10 h-10 rounded-full bg-slate-900 border border-slate-900 flex items-center justify-center text-xs text-gray-400 font-semibold"
+      class="w-10 h-10 rounded-full bg-slate-900 border border-slate-900 flex items-center justify-center text-xs text-gray-400 font-semibold"
     >
-    +10k
+      +10k
     </div>
   </div>
-  <p class="text-xs text-gray-400">
-      +10,000 Visitantes diarios
-  </p>
+  <p class="text-xs text-gray-400">+10,000 Visitantes diarios</p>
 </div>
