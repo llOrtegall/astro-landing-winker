@@ -1,39 +1,45 @@
 ---
-import FlacDownloader from '../../assets/logos/Flac_Downloader.svg';
-import Mp3Downloader from '../../assets/logos/Mp3_Downloader.svg';
-import Resourzly from '../../assets/logos/Resourzly.svg';
-import VipRemixer from '../../assets/logos/Vip_Remixer.svg';
-import VocalRemover from '../../assets/logos/Vocal_Remover.svg';
-import WShare from '../../assets/logos/wShare.svg';
+import FlacDownloader from "../../assets/logos/Flac_Downloader.svg";
+import Mp3Downloader from "../../assets/logos/Mp3_Downloader.svg";
+import Resourzly from "../../assets/logos/Resourzly.svg";
+import VipRemixer from "../../assets/logos/Vip_Remixer.svg";
+import VocalRemover from "../../assets/logos/Vocal_Remover.svg";
+import WShare from "../../assets/logos/wShare.svg";
 
 const logos = [
-  { Component: WShare, label: 'wShare', link: 'https://wshare.cc' },
+  { Component: WShare, label: "wShare", link: "https://wshare.cc" },
   {
     Component: VipRemixer,
-    label: 'Vip Remixer',
-    link: 'https://vipremixer.winkermind.com',
+    label: "Vip Remixer",
+    link: "https://vipremixer.winkermind.com",
   },
-  { Component: Resourzly, label: 'Resourzly', link: 'https://resourzly.com' },
+  { Component: Resourzly, label: "Resourzly", link: "https://resourzly.com" },
   {
     Component: FlacDownloader,
-    label: 'Flac Downloader',
-    link: 'https://flacdownloader.com',
+    label: "Flac Downloader",
+    link: "https://flacdownloader.com",
   },
   {
     Component: Mp3Downloader,
-    label: 'Mp3 Downloader',
-    link: 'https://mp3downloader.cc',
+    label: "Mp3 Downloader",
+    link: "https://mp3downloader.cc",
   },
   {
     Component: VocalRemover,
-    label: 'Vocal Remover',
-    link: 'https://vocalremover.winkermind.com',
+    label: "Vocal Remover",
+    link: "https://vocalremover.winkermind.com",
   },
 ];
 ---
 
-<section class="flex flex-col items-center justify-center gap-4 py-8 w-full overflow-hidden">
-  <h2 class="text-sm font-bold text-center text-sec tracking-wide uppercase pt-6">NUESTROS PROYECTOS</h2>
+<section
+  class="flex flex-col items-center justify-center gap-4 py-8 w-full overflow-hidden"
+>
+  <h2
+    class="text-sm font-bold text-center text-sec tracking-wide uppercase pt-8"
+  >
+    NUESTROS PROYECTOS
+  </h2>
 
   <div class="relative w-full">
     <div
@@ -46,17 +52,19 @@ const logos = [
     </div>
 
     <div class="flex gap-12 animate-scroll">
-      {[...logos, ...logos].map(({ Component, label, link }) => (
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="px-6 py-4 rounded-xl transition-all duration-300 flex items-center justify-center logo-tile shrink-0"
-        >
-          <Component class="h-8 w-auto" aria-hidden="true" />
-          <span class="sr-only">{label}</span>
-        </a>
-      ))}
+      {
+        [...logos, ...logos].map(({ Component, label, link }) => (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-4 rounded-xl transition-all duration-300 flex items-center justify-center logo-tile shrink-0"
+          >
+            <Component class="h-8 w-auto" aria-hidden="true" />
+            <span class="sr-only">{label}</span>
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -77,7 +85,10 @@ const logos = [
 
   .logo-tile :global(svg) {
     filter: grayscale(1) saturate(0.6);
-    transition: filter 200ms ease, opacity 200ms ease, transform 200ms ease;
+    transition:
+      filter 200ms ease,
+      opacity 200ms ease,
+      transform 200ms ease;
   }
 
   .logo-tile:hover {
@@ -92,31 +103,31 @@ const logos = [
 
 <script>
   function initCarousel() {
-    const carousel = document.querySelector('.animate-scroll') as HTMLElement;
+    const carousel = document.querySelector(".animate-scroll") as HTMLElement;
     if (!carousel) return;
 
     const items = carousel.children;
     const totalItems = items.length;
     const halfItems = totalItems / 2;
-    
+
     // Calcular ancho exacto de la primera mitad incluyendo gaps
     const computedStyle = getComputedStyle(carousel);
     const gap = parseFloat(computedStyle.gap) || 0;
-    
+
     let halfWidth = 0;
     for (let i = 0; i < halfItems; i++) {
       halfWidth += (items[i] as HTMLElement).offsetWidth;
     }
     halfWidth += gap * halfItems; // gaps entre elementos + gap final
-    
-    carousel.style.setProperty('--scroll-width', `-${halfWidth}px`);
+
+    carousel.style.setProperty("--scroll-width", `-${halfWidth}px`);
   }
 
   // Ejecutar después de que el DOM esté listo y las fuentes cargadas
-  if (document.readyState === 'complete') {
+  if (document.readyState === "complete") {
     initCarousel();
   } else {
-    window.addEventListener('load', initCarousel);
+    window.addEventListener("load", initCarousel);
   }
 </script>
 

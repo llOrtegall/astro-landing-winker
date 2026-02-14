@@ -37,6 +37,21 @@ const NAV_ICONS: Record<NavIconKey, ReactElement> = {
       <line x1="7" y1="7" x2="7.01" y2="7" />
     </svg>
   ),
+  question: (
+    <svg
+      className="h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 15a1.5 1.5 0 1 1 1.5-1.5A1.5 1.5 0 0 1 12 17zm1-4h-2V7h2z" />
+    </svg>
+  ),
   file: (
     <svg
       className="h-5 w-5"

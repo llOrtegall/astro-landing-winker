@@ -4,7 +4,7 @@ export interface NavItem {
   icon?: NavIconKey;
 }
 
-export type NavIconKey = 'folder' | 'tag' | 'file' | 'mail';
+export type NavIconKey = 'folder' | 'tag' | 'question' | 'file' | 'mail';
 
 export interface NavLinkProps {
   item: NavItem;
@@ -28,7 +28,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
   {
     href: '#faqs',
     label: 'FAQs',
-    icon: 'file',
+    icon: 'question',
   },
   {
     href: '#blog',
