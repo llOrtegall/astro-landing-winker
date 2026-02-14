@@ -1,4 +1,6 @@
-export function Logo() {
+import { memo } from 'react';
+
+function LogoComponent() {
   return (
     <a href="#hero" aria-label="Ir al inicio">
       <figure className="flex items-center gap-2">
@@ -7,8 +9,10 @@ export function Logo() {
           alt="Logo Winker"
           className="size-8 object-contain"
         />
-        <p className="font-semibold text-xl hidden xl:block">Winkermind</p>
+        <p className="font-semibold text-xl hidden 2xl:block">Winkermind</p>
       </figure>
     </a>
   );
 }
+
+export const Logo = memo(LogoComponent);

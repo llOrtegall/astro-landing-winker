@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 export interface AuthButtonsProps {
   isMobile?: boolean;
   className?: string;
 }
 
-export function AuthButtons({
+function AuthButtonsComponent({
   isMobile = false,
   className = '',
 }: AuthButtonsProps) {
@@ -35,13 +37,15 @@ export function AuthButtons({
   }
 
   return (
-    <div className="hidden md:flex gap-4 items-center font-normal text-sec">
+    <div
+      className={`hidden md:flex shrink-0 items-center font-normal text-sec gap-2 lg:gap-4 ${className}`}
+    >
       <a
         href="https://auth.winkermind.com/login"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Iniciar sesión"
-        className="cursor-pointer hover:text-gray-200 transition-colors duration-300"
+        className="cursor-pointer whitespace-nowrap text-xs lg:text-sm xl:text-base hover:text-gray-200 transition-colors duration-300"
       >
         Login
       </a>
@@ -49,7 +53,7 @@ export function AuthButtons({
         href="https://auth.winkermind.com/register"
         target="_blank"
         rel="noopener noreferrer"
-        className="cursor-pointer px-5 py-2 font-normal text-pri bg-quaternary rounded-full hover:brightness-110 transition-all duration-200"
+        className="cursor-pointer whitespace-nowrap px-3 lg:px-4 xl:px-5 py-1.5 lg:py-2 font-normal text-xs lg:text-sm xl:text-base text-pri bg-quaternary rounded-full hover:brightness-110 transition-all duration-200"
         aria-label="Registrarse"
       >
         Registrate
@@ -57,3 +61,5 @@ export function AuthButtons({
     </div>
   );
 }
+
+export const AuthButtons = memo(AuthButtonsComponent);

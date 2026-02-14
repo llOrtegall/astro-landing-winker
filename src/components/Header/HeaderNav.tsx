@@ -20,6 +20,8 @@ import {
 
 import { AuthButtons, Logo, NavLink, HamburgerMenu } from './ui';
 
+const getSectionIdFromHref = (href: string) => href.replace('#', '');
+
 export default function HeaderNav() {
   const isScrolled = useScrollDetection();
   const [activeSection, setActiveSection] = useSectionObserver();
@@ -44,7 +46,7 @@ export default function HeaderNav() {
 
   const handleNavClick = useCallback(
     (href: string) => {
-      const targetId = href.replace('#', '');
+      const targetId = getSectionIdFromHref(href);
       setActiveSection(targetId);
       // Cerrar menú móvil al hacer click en un link
       setIsMobileMenuOpen(false);
@@ -84,9 +86,8 @@ export default function HeaderNav() {
   }, [isMobileMenuOpen]);
 
   const headerClasses = useMemo(() => {
-    return `${HEADER_BASE_CLASSES} ${
-      isScrolled ? HEADER_SCROLLED_CLASSES : HEADER_INITIAL_CLASSES
-    }`;
+    return `${HEADER_BASE_CLASSES} ${isScrolled ? HEADER_SCROLLED_CLASSES : HEADER_INITIAL_CLASSES
+      }`;
   }, [isScrolled]);
 
   const sectionClasses = useMemo(() => {
@@ -94,21 +95,35 @@ export default function HeaderNav() {
   }, [isScrolled]);
 
   const updateIndicator = useCallback(() => {
+    const setSafeIndicatorRect = (nextRect: { left: number; width: number } | null) => {
+      setIndicatorRect((prevRect) => {
+        if (prevRect === null && nextRect === null) return prevRect;
+        if (prevRect === null || nextRect === null) return nextRect;
+        if (
+          prevRect.left === nextRect.left &&
+          prevRect.width === nextRect.width
+        ) {
+          return prevRect;
+        }
+        return nextRect;
+      });
+    };
+
     const listNode = navListRef.current;
     if (!listNode) {
-      setIndicatorRect(null);
+      setSafeIndicatorRect(null);
       return;
     }
 
     const activeHref = activeSection ? `#${activeSection}` : null;
     if (!activeHref) {
-      setIndicatorRect(null);
+      setSafeIndicatorRect(null);
       return;
     }
 
     const itemNode = navItemRefs.current[activeHref];
     if (!itemNode) {
-      setIndicatorRect(null);
+      setSafeIndicatorRect(null);
       return;
     }
 
@@ -116,11 +131,11 @@ export default function HeaderNav() {
     const itemRect = itemNode.getBoundingClientRect();
 
     if (itemRect.width === 0) {
-      setIndicatorRect(null);
+      setSafeIndicatorRect(null);
       return;
     }
 
-    setIndicatorRect({
+    setSafeIndicatorRect({
       left: itemRect.left - listRect.left,
       width: itemRect.width,
     });
@@ -159,7 +174,7 @@ export default function HeaderNav() {
                 <NavLink
                   key={item.href}
                   item={item}
-                  isActive={activeSection === item.href.replace('#', '')}
+                  isActive={activeSection === getSectionIdFromHref(item.href)}
                   onClick={handleNavClick}
                   isMobile={false}
                   registerNode={registerNavItem}
@@ -201,7 +216,7 @@ export default function HeaderNav() {
               <NavLink
                 key={item.href}
                 item={item}
-                isActive={activeSection === item.href.replace('#', '')}
+                isActive={activeSection === getSectionIdFromHref(item.href)}
                 onClick={handleNavClick}
                 isMobile={true}
               />

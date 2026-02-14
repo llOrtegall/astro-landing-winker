@@ -13,7 +13,10 @@ export function useScrollDetection(threshold: number = SCROLL_THRESHOLD) {
 
     const handleScroll = () => {
       rafId = requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > threshold);
+        const nextIsScrolled = window.scrollY > threshold;
+        setIsScrolled((prevIsScrolled) =>
+          prevIsScrolled === nextIsScrolled ? prevIsScrolled : nextIsScrolled,
+        );
       });
     };
 
@@ -46,14 +49,23 @@ export function useSectionObserver() {
 
     sectionsRef.current = sections;
 
+    const updateActiveSection = (nextSection: string | null) => {
+      if (!nextSection) return;
+      setActiveSection((prevSection) =>
+        prevSection === nextSection ? prevSection : nextSection,
+      );
+    };
+
     const pickActiveSection = (entries?: IntersectionObserverEntry[]) => {
       const visible = entries?.filter((entry) => entry.isIntersecting) ?? [];
       if (visible.length > 0) {
-        const topEntry = visible.sort(
-          (a, b) => b.intersectionRatio - a.intersectionRatio,
-        )[0];
+        const topEntry = visible.reduce((bestEntry, currentEntry) =>
+          currentEntry.intersectionRatio > bestEntry.intersectionRatio
+            ? currentEntry
+            : bestEntry,
+        );
         const id = topEntry.target.getAttribute('id');
-        if (id) setActiveSection(id);
+        updateActiveSection(id);
         return;
       }
 
@@ -66,7 +78,7 @@ export function useSectionObserver() {
 
       if (closest) {
         const id = closest.section.getAttribute('id');
-        if (id) setActiveSection(id);
+        updateActiveSection(id);
       }
     };
 
@@ -74,8 +86,8 @@ export function useSectionObserver() {
       pickActiveSection(entries);
     }, observerOptions);
 
-    sections.forEach(section => {
-      observer.observe(section)
+    sections.forEach((section) => {
+      observer.observe(section);
     });
 
     const handleScroll = () => {

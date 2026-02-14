@@ -1,4 +1,4 @@
-import { useCallback, type ReactElement } from 'react';
+import { memo, useCallback, type ReactElement } from 'react';
 import {
   MOBILE_NAV_ITEM_CLASSES,
   type NavIconKey,
@@ -89,7 +89,7 @@ const NAV_ICONS: Record<NavIconKey, ReactElement> = {
   ),
 };
 
-export function NavLink({
+function NavLinkComponent({
   item,
   isActive,
   onClick,
@@ -136,3 +136,13 @@ export function NavLink({
     </li>
   );
 }
+
+export const NavLink = memo(NavLinkComponent, (prevProps, nextProps) => {
+  return (
+    prevProps.item === nextProps.item &&
+    prevProps.isActive === nextProps.isActive &&
+    prevProps.onClick === nextProps.onClick &&
+    prevProps.isMobile === nextProps.isMobile &&
+    prevProps.registerNode === nextProps.registerNode
+  );
+});
