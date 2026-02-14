@@ -12,8 +12,8 @@ interface Props {
 const {
   title,
   price,
-  period = 'mes',
-  billingInfo = 'Se factura cada mes.',
+  period = "mes",
+  billingInfo = "Se factura cada mes.",
   features,
   plan,
   className,
@@ -21,7 +21,7 @@ const {
 ---
 
 <article
-  class={`bg-[#2C2C32] rounded-2xl p-8 flex flex-col ${className ?? ''}`}
+  class={`bg-[#2C2C32] rounded-2xl p-8 flex flex-col ${className ?? ""}`}
   data-plan={plan}
 >
   <div class="mb-6 tracking-tighter">
@@ -38,11 +38,11 @@ const {
     href="https://app.winkermind.com/pricing"
     target="_blank"
     rel="noopener noreferrer"
-    class="w-full py-3 px-5 bg-quaternary text-pri font-semibold
+    class="w-full py-3 px-5 bg-quaternary text-center text-pri font-semibold
     rounded-xl hover:bg-white hover:text-primary cursor-pointer transition-colors ease-in-out duration-300"
   >
     Empezar
-</a>
+  </a>
 
   <ul class="space-y-2 mt-6 mb-4 grow">
     {
