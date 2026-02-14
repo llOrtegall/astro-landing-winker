@@ -1,31 +1,17 @@
 ---
-import { STEMS_CONFIG, ANIMATION_DELAYS } from './VocalRemoverDemo/constants';
-import vocalImg from '../assets/voice/vocal.webp';
-import drumsImg from '../assets/voice/drums.webp';
-import bassImg from '../assets/voice/bass.webp';
-import pianoImg from '../assets/voice/piano.webp';
-import guitarImg from '../assets/voice/guitar.webp';
-import otherImg from '../assets/voice/other.webp';
+import { STEMS_CONFIG, ANIMATION_DELAYS } from "./VocalRemoverDemo/constants";
 
 // Componentes
-import Header from './VocalRemoverDemo/Header.astro';
-import ProgressBar from './VocalRemoverDemo/ProgressBar.astro';
-import ControlButtons from './VocalRemoverDemo/ControlButtons.astro';
-import StemRow from './VocalRemoverDemo/StemRow.astro';
-
-// Mapa de imágenes de espectro
-const spectrumMap: Record<string, any> = {
-  vocals: vocalImg,
-  drums: drumsImg,
-  bass: bassImg,
-  piano: pianoImg,
-  guitar: guitarImg,
-  other: otherImg,
-};
+import Header from "./VocalRemoverDemo/Header.astro";
+import ProgressBar from "./VocalRemoverDemo/ProgressBar.astro";
+import ControlButtons from "./VocalRemoverDemo/ControlButtons.astro";
+import StemRow from "./VocalRemoverDemo/StemRow.astro";
 ---
 
 <section class="mt-12 sm:mt-16 lg:mt-20">
-  <h2 class="text-2xl sm:text-3xl font-normal text-white pb-6 sm:pb-8 tracking-tighter">
+  <h2
+    class="text-2xl sm:text-3xl font-normal text-white pb-6 sm:pb-8 tracking-tighter"
+  >
     Apps de Inteligencia Artificial
   </h2>
 
@@ -38,7 +24,7 @@ const spectrumMap: Record<string, any> = {
     <!-- Audio Elements (hidden) -->
     {
       STEMS_CONFIG.map((stem) => (
-        <audio id={`audio-${stem.id}`} preload="auto">
+        <audio id={`audio-${stem.id}`} preload="none">
           <source src={stem.file} type="audio/mpeg" />
         </audio>
       ))
@@ -46,14 +32,18 @@ const spectrumMap: Record<string, any> = {
 
     <!-- Music Player -->
     <div class="flex flex-col gap-4 mb-6 sm:mb-8">
-      <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div
+        class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+      >
         <div class="flex-1 min-w-0">
           <p class="text-base sm:text-lg font-semibold text-white mb-3">
             Billie Eilish - Bad Guy
           </p>
           <ProgressBar />
         </div>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 md:gap-8">
+        <div
+          class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 md:gap-8"
+        >
           <ControlButtons />
 
           <div class="flex items-center gap-3">
@@ -90,7 +80,7 @@ const spectrumMap: Record<string, any> = {
           <StemRow
             name={stem.name}
             id={stem.id}
-            spectrum={spectrumMap[stem.id].src}
+            spectrum={stem.spectrum.src}
             animationDelay={ANIMATION_DELAYS[index]}
           />
         ))

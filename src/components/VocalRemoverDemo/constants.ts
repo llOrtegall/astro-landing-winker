@@ -8,6 +8,13 @@ import bassAudio from '../../assets/audios/Billie_Eilish_-_bad_guy_Bass.mp3';
 import pianoAudio from '../../assets/audios/Billie_Eilish_-_bad_guy_Piano.mp3';
 import guitarAudio from '../../assets/audios/Billie_Eilish_-_bad_guy_Guitar.mp3';
 import otherAudio from '../../assets/audios/Billie_Eilish_-_bad_guy_Other.mp3';
+import vocalImg from '../../assets/voice/vocal.webp';
+import drumsImg from '../../assets/voice/drums.webp';
+import bassImg from '../../assets/voice/bass.webp';
+import pianoImg from '../../assets/voice/piano.webp';
+import guitarImg from '../../assets/voice/guitar.webp';
+import otherImg from '../../assets/voice/other.webp';
+import type { Stem, StemId } from './types';
 
 export const STEM_IDS = [
   'vocals',
@@ -16,44 +23,44 @@ export const STEM_IDS = [
   'piano',
   'guitar',
   'other',
-] as const;
+] as const satisfies readonly StemId[];
 
-export const STEMS_CONFIG = [
+export const STEMS_CONFIG: readonly Stem[] = [
   {
     id: 'vocals',
     name: 'Vocals',
     file: vocalsAudio,
-    spectrum: '/src/assets/voice/vocal.webp',
+    spectrum: vocalImg,
   },
   {
     id: 'drums',
     name: 'Drums',
     file: drumsAudio,
-    spectrum: '/src/assets/voice/drums.webp',
+    spectrum: drumsImg,
   },
   {
     id: 'bass',
     name: 'Bass',
     file: bassAudio,
-    spectrum: '/src/assets/voice/bass.webp',
+    spectrum: bassImg,
   },
   {
     id: 'piano',
     name: 'Piano',
     file: pianoAudio,
-    spectrum: '/src/assets/voice/piano.webp',
+    spectrum: pianoImg,
   },
   {
     id: 'guitar',
     name: 'Guitar',
     file: guitarAudio,
-    spectrum: '/src/assets/voice/guitar.webp',
+    spectrum: guitarImg,
   },
   {
     id: 'other',
     name: 'Other',
     file: otherAudio,
-    spectrum: '/src/assets/voice/other.webp',
+    spectrum: otherImg,
   },
 ] as const;
 

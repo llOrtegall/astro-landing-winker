@@ -1,7 +1,12 @@
+import type { ImageMetadata } from 'astro';
+
+export type StemId = 'vocals' | 'drums' | 'bass' | 'piano' | 'guitar' | 'other';
+
 export interface Stem {
-  id: string;
+  id: StemId;
   name: string;
   file: string;
+  spectrum: ImageMetadata;
 }
 
 export interface AudioPlayerState {
@@ -11,7 +16,7 @@ export interface AudioPlayerState {
 }
 
 export interface StemState {
-  id: string;
+  id: StemId;
   isMuted: boolean;
   progress: number;
 }

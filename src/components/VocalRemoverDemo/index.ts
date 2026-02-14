@@ -1,11 +1,14 @@
 import { AudioPlayer } from './AudioPlayer';
 import { StemManager } from './StemManager';
 import { STEM_IDS } from './constants';
+import type { StemId } from './types';
 
 export class VocalRemoverDemo {
   private audioPlayer: AudioPlayer;
   private stemManager: StemManager;
   private cachedBlobUrls: string[] = [];
+  private stemsPrepared = false;
+  private stemsLoadingPromise: Promise<void> | null = null;
 
   constructor() {
     this.audioPlayer = new AudioPlayer();
@@ -16,10 +19,25 @@ export class VocalRemoverDemo {
    * Inicializa el demo
    */
   async init(): Promise<void> {
-    await this.preloadAndCacheStems();
-    this.audioPlayer.initializeAudio(Array.from(STEM_IDS));
-    this.stemManager.initialize(Array.from(STEM_IDS));
+    const stemIds = Array.from(STEM_IDS);
+    this.audioPlayer.initializeAudio(stemIds);
+    this.stemManager.initialize(stemIds);
     this.attachEventListeners();
+  }
+
+  /**
+   * Garantiza que los audios se descarguen/cachen una sola vez, al primer play.
+   */
+  private async ensureStemsPrepared(): Promise<void> {
+    if (this.stemsPrepared) return;
+
+    if (!this.stemsLoadingPromise) {
+      this.stemsLoadingPromise = this.preloadAndCacheStems().then(() => {
+        this.stemsPrepared = true;
+      });
+    }
+
+    await this.stemsLoadingPromise;
   }
 
   /**
@@ -152,7 +170,7 @@ export class VocalRemoverDemo {
   /**
    * Alterna entre play y pause
    */
-  private togglePlayPause(): void {
+  private async togglePlayPause(): Promise<void> {
     const isPlaying = this.audioPlayer.getIsPlaying();
     const playIcon = document.getElementById('playIcon');
     const pauseIcon = document.getElementById('pauseIcon');
@@ -164,6 +182,7 @@ export class VocalRemoverDemo {
       pauseIcon?.classList.add('hidden');
       playBtn?.classList.remove('pulse-active');
     } else {
+      await this.ensureStemsPrepared();
       this.audioPlayer.play();
       playIcon?.classList.add('hidden');
       pauseIcon?.classList.remove('hidden');
@@ -189,8 +208,8 @@ export class VocalRemoverDemo {
   /**
    * Alterna el mute de un stem
    */
-  private toggleMuteStem(stemId: string): void {
-    const isMuted = this.stemManager.toggleMute(stemId);
+  private toggleMuteStem(stemId: StemId): void {
+    this.stemManager.toggleMute(stemId);
     this.audioPlayer.toggleMute(stemId);
   }
 
@@ -211,13 +230,13 @@ export class VocalRemoverDemo {
 /**
  * Inicialización automática cuando el DOM está listo
  */
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    const demo = new VocalRemoverDemo();
-    demo.init();
-  });
-} else {
-  // El DOM ya está listo
+const bootstrap = () => {
   const demo = new VocalRemoverDemo();
   demo.init();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrap, { once: true });
+} else {
+  bootstrap();
 }
